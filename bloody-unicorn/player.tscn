@@ -1,33 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://boorxy8t6uaci"]
+[gd_scene load_steps=6 format=3 uid="uid://boorxy8t6uaci"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ac0y6"]
-[ext_resource type="Texture2D" uid="uid://bbq1ogwh7v1wc" path="res://temp-sprite-frame.png" id="2_r8inn"]
+[ext_resource type="Texture2D" uid="uid://dr7q62xv5agwu" path="res://assets/img/hqdefault-1135565747_up.jpg" id="2_v414n"]
+[ext_resource type="Texture2D" uid="uid://churujhgblt8m" path="res://assets/img/hqdefault-1135565747_walk.jpg" id="3_i34qm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smjhp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_r8inn")
+"texture": ExtResource("2_v414n")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i34qm")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7jkj"]
-size = Vector2(95, 191)
+size = Vector2(151, 180)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_ac0y6")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(19.02, 19.02)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_smjhp")
-animation = &"Walk"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0.5)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_f7jkj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -46.0
+offset_top = -57.0
+offset_right = 45.0
+offset_bottom = 56.0
+color = Color(0, 1, 0, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

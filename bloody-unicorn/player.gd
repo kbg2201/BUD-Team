@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 100
+@export var speed = 700
 var screen_size
 
 signal hit
@@ -14,13 +14,13 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+		velocity.x += 10
 	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+		velocity.x -= 10
 	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
+		velocity.y += 10
 	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+		velocity.y -= 10
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed

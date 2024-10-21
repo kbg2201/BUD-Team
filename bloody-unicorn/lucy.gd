@@ -3,7 +3,8 @@ extends CanvasLayer
 #crude dialogue
 var thingsLucySays = [
 	"Hello?",
-	"Hello?",
+	"Who's there?",
+	"Who's there?",
 	"Hey.",
 	"Psst.",
 	"Come here.",
@@ -13,14 +14,16 @@ var thingsLucySays = [
 	"Can you hear me?",
 	"I'm a unicorn.",
 	"Over here.",
-	"I need help."
+	"I need help.",
+	"I can hear you."
 ]
 var thingsLucySaysWhenSheIsAboutToKillYou = [
 	"Hold still.",
 	"You made it.",
 	"Here I am.",
 	"Sucker.",
-	"Neigh."
+	"Neigh.",
+	"I see you now."
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -37,15 +40,22 @@ func start_talking():
 	var sentinel = 0
 	while(true and sentinel<1000):
 		sentinel += 1
-		await get_tree().create_timer(0.75).timeout
+		await get_tree().create_timer(2.0).timeout
 		speak(thingsLucySays)
 		await get_tree().create_timer(2.0).timeout
+		$LucyVoice/BlackBcgdMap.visible = false
 		$LucyVoice.text = ""
 		print(sentinel)
 
 #pass an array of strings to this function
 func speak(msg):
-	#change position of text
-	$LucyVoice.position = Vector2(randi()%219+50,randi()%189+50)
+	$LucyVoice/BlackBcgdMap.visible = true
+	#change position of text within the window
+	var windowHalfX = (get_window().get_size_with_decorations().x)/2
+	var windowHalfY = (get_window().get_size_with_decorations().y)/2
+	$LucyVoice.position = Vector2(
+		randi()%(windowHalfX-101)+100,
+		randi()%(windowHalfY-101)+100
+		)
 	#output random string from array
 	$LucyVoice.text = msg[randi() % msg.size()]
