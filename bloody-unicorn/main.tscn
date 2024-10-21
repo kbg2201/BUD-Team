@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_jqwt7"]
 [ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://player.tscn" id="2_31q2a"]
 [ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://lucy.tscn" id="3_rwd7k"]
-[ext_resource type="Texture2D" uid="uid://71678svvi4qt" path="res://assets/img/lucybg1.jpg" id="4_8sgtj"]
+[ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="4_edq15"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jqwt7")
@@ -16,6 +16,6 @@ script = ExtResource("1_jqwt7")
 z_index = -2
 offset_right = 364.0
 offset_bottom = 40.0
-texture = ExtResource("4_8sgtj")
+texture = ExtResource("4_edq15")
 expand_mode = 2
 stretch_mode = 6
