@@ -40,7 +40,7 @@ func start_talking():
 	var sentinel = 0
 	while(true and sentinel<1000):
 		sentinel += 1
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(float((randi()%5)+1)).timeout
 		speak(thingsLucySays)
 		await get_tree().create_timer(2.0).timeout
 		$LucyVoice/BlackBcgdMap.visible = false
