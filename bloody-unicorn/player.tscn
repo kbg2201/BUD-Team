@@ -1,42 +1,60 @@
-[gd_scene load_steps=6 format=3 uid="uid://boorxy8t6uaci"]
+[gd_scene load_steps=10 format=3 uid="uid://boorxy8t6uaci"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ac0y6"]
-[ext_resource type="Texture2D" uid="uid://dr7q62xv5agwu" path="res://assets/img/hqdefault-1135565747_up.jpg" id="2_v414n"]
-[ext_resource type="Texture2D" uid="uid://churujhgblt8m" path="res://assets/img/hqdefault-1135565747_walk.jpg" id="3_i34qm"]
+[ext_resource type="Texture2D" uid="uid://xfadc843ytss" path="res://art/player-sprite-down0.png" id="2_61d5h"]
+[ext_resource type="Texture2D" uid="uid://62qgh51a3pf0" path="res://art/player-sprite-down1.png" id="3_exbqv"]
+[ext_resource type="Texture2D" uid="uid://ca84djq1g03uo" path="res://art/player-sprite-up0.png" id="3_uvd6b"]
+[ext_resource type="Texture2D" uid="uid://8psix1x2ofeo" path="res://art/player-sprite-down2.png" id="4_i6168"]
+[ext_resource type="Texture2D" uid="uid://kf6nv24ae544" path="res://art/player-sprite-up1.png" id="6_dgbnh"]
+[ext_resource type="Texture2D" uid="uid://dlq8rmqcxngp1" path="res://art/player-sprite-up2.png" id="7_rh7dq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smjhp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v414n")
+"texture": ExtResource("2_61d5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_exbqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i6168")
 }],
 "loop": true,
-"name": &"up",
+"name": &"down",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_i34qm")
+"texture": ExtResource("3_uvd6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dgbnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rh7dq")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"up",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7jkj"]
-size = Vector2(151, 180)
+size = Vector2(92, 113)
 
 [node name="Player" type="Area2D"]
+position = Vector2(603, 328)
 script = ExtResource("1_ac0y6")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -2)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_smjhp")
-animation = &"walk"
+animation = &"up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_f7jkj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -45,6 +63,6 @@ offset_left = -46.0
 offset_top = -57.0
 offset_right = 45.0
 offset_bottom = 56.0
-color = Color(0, 1, 0, 1)
+color = Color(1, 1, 1, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

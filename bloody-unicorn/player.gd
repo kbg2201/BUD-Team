@@ -15,12 +15,16 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 10
+		$AnimatedSprite2D.animation = "down"
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 10
+		$AnimatedSprite2D.animation = "down"
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 10
+		$AnimatedSprite2D.animation = "down"
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 10
+		$AnimatedSprite2D.animation = "up"
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -31,14 +35,14 @@ func _process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
+	#if velocity.x != 0:
+		#$AnimatedSprite2D.animation = "down"
+		#$AnimatedSprite2D.flip_v = false
 		# See the note below about the following boolean assignment.
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+		#$AnimatedSprite2D.flip_h = velocity.x < 0
+	#elif velocity.y != 0:
+		#$AnimatedSprite2D.animation = "up"
+		#$AnimatedSprite2D.flip_v = velocity.y > 0
 
 func _on_body_entered(body):
 	hide()
