@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+#var voice = GDSAM.new()
+#var audiostream = AudioStreamPlayer.new()
+
 #crude dialogue
 var thingsLucySays = [
 	"Hello?",
@@ -58,4 +61,6 @@ func speak(msg):
 		randi()%(windowHalfY-101)+100
 		)
 	#output random string from array
-	$LucyVoice.text = msg[randi() % msg.size()]
+	var text = msg[randi() % msg.size()]
+	$LucyVoice.text = text
+	#voice.speak(audiostream,text)
