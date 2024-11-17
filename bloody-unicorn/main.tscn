@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_jqwt7"]
 [ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://player.tscn" id="2_31q2a"]
-[ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://lucy.tscn" id="3_rwd7k"]
+[ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://lucyvoice.tscn" id="3_rwd7k"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="4_edq15"]
 
 [node name="Main" type="Node"]
@@ -10,7 +10,7 @@ script = ExtResource("1_jqwt7")
 
 [node name="Player" parent="." instance=ExtResource("2_31q2a")]
 
-[node name="Lucy" parent="." instance=ExtResource("3_rwd7k")]
+[node name="LucyVoice" parent="." instance=ExtResource("3_rwd7k")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -2
