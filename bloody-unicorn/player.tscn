@@ -43,7 +43,7 @@ metadata/_edit_group_ = true
 position = Vector2(0, -2)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_smjhp")
-animation = &"up"
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
