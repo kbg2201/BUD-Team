@@ -28,9 +28,14 @@ func _process(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		if $GrassTimer.time_left <= 0:
+			$Grass.play()
+			$GrassTimer.start(0.7)
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.pause()
+		$Grass.stop()
+		
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
