@@ -42,10 +42,12 @@ func _process(delta: float) -> void:
 func start_talking():
 	var sentinel = 0
 	while(true and sentinel<1000):
+		$knifescrape.stop()
 		sentinel += 1
 		await get_tree().create_timer(float((randi()%3)+1)).timeout
 		speak(thingsLucySaysWhenSheIsAboutToKillYou) #changed for effect
-		await get_tree().create_timer(2.0).timeout
+		$knifescrape.play() 
+		await get_tree().create_timer(float((randi()%3)+1)).timeout
 		$LucyVoice/BlackBcgdMap.visible = false
 		$LucyVoice.text = ""
 		print(sentinel)

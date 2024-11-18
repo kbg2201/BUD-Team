@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 300
+var speed = 200
 #i made her get faster until she reaches you
 var pursuit_speed = 1
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pursuit_speed += 0.2
+	pursuit_speed += 0.3
 	var next_path_pos := nav_agent.get_next_path_position()
 	var dir := global_position.direction_to(next_path_pos)
 	velocity = dir * (speed + pursuit_speed)
