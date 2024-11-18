@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqin2bn47hlda"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_700qu"]
+
+[sub_resource type="GDScript" id="GDScript_ip21y"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_700qu")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 306.0
+offset_right = 652.0
+offset_bottom = 364.0
+text = "Start"
+script = SubResource("GDScript_ip21y")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 398.0
+offset_right = 655.0
+offset_bottom = 456.0
+text = "Quit
+"
+script = SubResource("GDScript_ip21y")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
