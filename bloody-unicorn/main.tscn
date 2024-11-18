@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=7 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jqwt7"]
 [ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://player.tscn" id="2_31q2a"]
 [ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://lucyvoice.tscn" id="3_rwd7k"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="4_edq15"]
+[ext_resource type="PackedScene" uid="uid://w8fyrwg2nbuo" path="res://enemy_unicorn.tscn" id="5_ufu58"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
+vertices = PackedVector2Array(1150.85, 624.148, 28.0938, 641.828, 33.8984, 37.8906, 1142.14, 26.1016)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 16, 1161, 634, 18, 652, 24, 28)])
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jqwt7")
 
 [node name="Player" parent="." instance=ExtResource("2_31q2a")]
+scale = Vector2(0.7, 0.7)
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_rwd7k")]
 
@@ -19,3 +26,10 @@ offset_bottom = 40.0
 texture = ExtResource("4_edq15")
 expand_mode = 2
 stretch_mode = 6
+
+[node name="EnemyUnicorn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ufu58")]
+position = Vector2(166, 501)
+player = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_o3qb5")
