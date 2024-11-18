@@ -30,7 +30,7 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 		if $GrassTimer.time_left <= 0:
 			$Grass.play()
-			$GrassTimer.start(0.7)
+			$GrassTimer.start(0.25) #i think smaller timer is better
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.pause()
