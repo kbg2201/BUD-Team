@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqin2bn47hlda"]
+[gd_scene load_steps=4 format=3 uid="uid://bqin2bn47hlda"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_700qu"]
+[ext_resource type="Texture2D" uid="uid://y0w37vu8skwr" path="res://assets/bloody unicorn.png" id="2_kcqqj"]
 
 [sub_resource type="GDScript" id="GDScript_ip21y"]
 script/source = "extends Button
@@ -23,22 +24,27 @@ script = ExtResource("1_700qu")
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 467.0
-offset_top = 306.0
-offset_right = 652.0
-offset_bottom = 364.0
+offset_left = 470.0
+offset_top = 388.0
+offset_right = 655.0
+offset_bottom = 446.0
 text = "Start"
 script = SubResource("GDScript_ip21y")
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 470.0
-offset_top = 398.0
+offset_top = 490.0
 offset_right = 655.0
-offset_bottom = 456.0
+offset_bottom = 548.0
 text = "Quit
 "
 script = SubResource("GDScript_ip21y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(604, 198)
+scale = Vector2(0.504687, 0.550926)
+texture = ExtResource("2_kcqqj")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
