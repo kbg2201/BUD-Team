@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=8 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://Scenes/player.tscn" id="2_owd1m"]
+[ext_resource type="AudioStream" uid="uid://7olkjf6tbvhq" path="res://audio/Grass.mp3" id="3_n2jv4"]
 [ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://Scenes/lucyvoice.tscn" id="3_odk8b"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="4_f83xv"]
 [ext_resource type="PackedScene" uid="uid://w8fyrwg2nbuo" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
@@ -16,6 +17,12 @@ script = ExtResource("1_tay2g")
 
 [node name="Player" parent="." instance=ExtResource("2_owd1m")]
 scale = Vector2(0.7, 0.7)
+
+[node name="Grass" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("3_n2jv4")
+
+[node name="GrassTimer" type="Timer" parent="Player"]
+one_shot = true
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
 
