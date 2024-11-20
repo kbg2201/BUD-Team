@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=11 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://Scenes/player.tscn" id="2_owd1m"]
@@ -7,11 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://w8fyrwg2nbuo" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_r8gia"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
 vertices = PackedVector2Array(1150.85, 624.148, 28.0938, 641.828, 33.8984, 37.8906, 1142.14, 26.1016)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 16, 1161, 634, 18, 652, 24, 28)])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lw3j"]
+shader = ExtResource("8_r8gia")
+shader_parameter/crt_brightness = 1.0
+shader_parameter/crt_ghost = 3.0
+shader_parameter/crt_grid = 0.4
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tay2g")
@@ -44,3 +51,13 @@ player = NodePath("../Player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_o3qb5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8lw3j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
