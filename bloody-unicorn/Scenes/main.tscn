@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://due2ymlrp6sru"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
+[ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://Scenes/player.tscn" id="2_owd1m"]
+[ext_resource type="AudioStream" uid="uid://7olkjf6tbvhq" path="res://audio/Grass.mp3" id="3_n2jv4"]
+[ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://Scenes/lucyvoice.tscn" id="3_odk8b"]
+[ext_resource type="PackedScene" uid="uid://w8fyrwg2nbuo" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
+[ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
+[ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
+vertices = PackedVector2Array(1150.85, 624.148, 28.0938, 641.828, 33.8984, 37.8906, 1142.14, 26.1016)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 16, 1161, 634, 18, 652, 24, 28)])
+
+[node name="Main" type="Node"]
+script = ExtResource("1_tay2g")
+
+[node name="Player" parent="." instance=ExtResource("2_owd1m")]
+scale = Vector2(0.7, 0.7)
+
+[node name="Grass" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("3_n2jv4")
+
+[node name="GrassTimer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
+
+[node name="knifescrape" type="AudioStreamPlayer2D" parent="LucyVoice"]
+stream = ExtResource("5_kxich")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+offset_right = 364.0
+offset_bottom = 40.0
+texture = ExtResource("6_f3m6a")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="EnemyUnicorn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4eyku")]
+position = Vector2(1300, 750)
+player = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_o3qb5")
