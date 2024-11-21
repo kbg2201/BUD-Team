@@ -2191,8 +2191,10 @@ sources/5 = SubResource("TileSetAtlasSource_q6a4j")
 script = ExtResource("1_jqwt7")
 
 [node name="Player" parent="." instance=ExtResource("2_31q2a")]
+position = Vector2(570, 312)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+position = Vector2(-6, 11)
 remote_path = NodePath("../../Camera2D")
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_rwd7k")]
@@ -2206,7 +2208,7 @@ expand_mode = 2
 stretch_mode = 6
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(602, 225)
+position = Vector2(549, 225)
 rotation = 1.56001
 scale = Vector2(0.817671, 0.935031)
 tile_set = SubResource("TileSet_6i4qn")
@@ -2231,9 +2233,9 @@ tile_set = SubResource("TileSet_6i4qn")
 use_parent_material = true
 tile_set = SubResource("TileSet_6i4qn")
 
-[node name="Layer0" type="TileMapLayer" parent="TileMap"]
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
 tile_set = SubResource("TileSet_6i4qn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(603, 328)
+position = Vector2(564, 323)
