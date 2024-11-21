@@ -1,6 +1,8 @@
 extends Control
+var show_light
 
 func _ready():
+	show_light = true
 	$VBoxContainer/StartButton.hide()
 	$VBoxContainer/QuitButton.hide()
 	$AnimationTimer.start()
@@ -20,3 +22,12 @@ func _on_animation_timer_timeout() -> void:
 	$VBoxContainer/QuitButton.show()
 	$VBoxContainer/Panel/AnimationRect.hide()
 	#pass # Replace with function body.
+
+
+func _on_light_timer_timeout() -> void:
+	var rand = randi_range(0, 3)
+	if rand == 1:
+		$AnimationPlayer.play("flicker")
+	if show_light == true:
+		$AnimationPlayer.play("flicker")
+		show_light = false

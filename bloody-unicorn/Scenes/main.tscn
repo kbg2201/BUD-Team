@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_r8gia"]
-[ext_resource type="PackedScene" uid="uid://b2t6p61sv7j5r" path="res://death_screen.tscn" id="9_jlu5d"]
+[ext_resource type="PackedScene" uid="uid://b2t6p61sv7j5r" path="res://Scenes/death_screen.tscn" id="9_jlu5d"]
 [ext_resource type="PackedScene" uid="uid://durgkfblkydn0" path="res://Scenes/map.tscn" id="10_red1e"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="11_jau13"]
 
@@ -39,6 +39,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.3, 1.3)
 position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 rotation_smoothing_speed = 10.0
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
@@ -66,14 +67,19 @@ navigation_polygon = SubResource("NavigationPolygon_o3qb5")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8lw3j")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -1.27
+anchor_top = -1.676
+anchor_right = 3.911
+anchor_bottom = 4.344
+offset_left = 83.0402
+offset_top = 0.0480957
+offset_right = 0.527832
+offset_bottom = 0.0878906
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
-visible = false
 
 [node name="TileMap" parent="." instance=ExtResource("10_red1e")]
 position = Vector2(548, 225)

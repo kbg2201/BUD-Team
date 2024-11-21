@@ -1,24 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2t6p61sv7j5r"]
+[gd_scene load_steps=10 format=3 uid="uid://b2t6p61sv7j5r"]
 
 [ext_resource type="Script" path="res://death_screen.gd" id="1_tpw61"]
 [ext_resource type="FontFile" uid="uid://dmsqslo6uor21" path="res://assets/fonts/BloodlettingLegacy.ttf" id="2_nawe6"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="3_l84dw"]
-
-[sub_resource type="Animation" id="Animation_ar6ko"]
-resource_name = "fade_in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Message:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1)]
-}
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_m6b0s"]
 
 [sub_resource type="Animation" id="Animation_q6gue"]
 length = 0.001
@@ -46,6 +31,46 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dimmer:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.541176)]
+}
+
+[sub_resource type="Animation" id="Animation_ar6ko"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Message:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dimmer:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.541176)]
+}
 
 [sub_resource type="Animation" id="Animation_jal85"]
 resource_name = "fade_out"
@@ -70,15 +95,21 @@ _data = {
 "fade_out": SubResource("Animation_jal85")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp20c"]
+shader = ExtResource("4_m6b0s")
+shader_parameter/crt_brightness = 1.0
+shader_parameter/crt_ghost = 3.0
+shader_parameter/crt_grid = 0.4
+
 [node name="Death_Screen" type="CanvasLayer"]
 script = ExtResource("1_tpw61")
 
 [node name="Dimmer" type="ColorRect" parent="."]
 z_index = -1
-offset_left = -26.0
-offset_top = -19.0
-offset_right = 1222.0
-offset_bottom = 701.0
+offset_left = -66.0
+offset_top = -67.0
+offset_right = 1344.0
+offset_bottom = 782.0
 color = Color(0, 0, 0, 0.541176)
 
 [node name="Message" type="Label" parent="."]
@@ -111,13 +142,25 @@ libraries = {
 
 [node name="Transition" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -37.0
+offset_top = -29.0
+offset_right = 214.0
+offset_bottom = 289.0
 scale = Vector2(5.34792, 2.45796)
 texture = ExtResource("3_l84dw")
 
 [node name="Transition_Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_pp20c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="Text_Timer" to="." method="_on_text_timer_timeout"]
 [connection signal="timeout" from="Text_Timer" to="." method="_on_timer_timeout"]
