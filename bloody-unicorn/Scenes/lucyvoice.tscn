@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlpavsu6heed3"]
+[gd_scene load_steps=2 format=3 uid="uid://bflqk4x6jx4mo"]
 
 [ext_resource type="Script" path="res://lucy.gd" id="1_0d37c"]
 
@@ -22,6 +22,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="BlackBcgdMap" type="ColorRect" parent="LucyVoice"]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -35,4 +36,4 @@ offset_right = 125.0
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)

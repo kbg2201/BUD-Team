@@ -91,10 +91,10 @@ texture = ExtResource("2_kcqqj")
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
 z_index = -1
 layout_mode = 2
-offset_left = -597.0
-offset_top = -388.0
-offset_right = 600.0
-offset_bottom = 365.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 332.0
 size_flags_horizontal = 4
 texture = ExtResource("3_bgcp2")
 
