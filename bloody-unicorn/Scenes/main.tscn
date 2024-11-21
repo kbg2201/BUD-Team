@@ -2248,6 +2248,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(549, 225)
