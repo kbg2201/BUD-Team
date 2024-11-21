@@ -1,6 +1,5 @@
 extends Node
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#set background size (this is bad and sucks)
@@ -8,6 +7,7 @@ func _ready() -> void:
 		get_window().get_size_with_decorations().x,
 		get_window().get_size_with_decorations().y
 	)
+	$LucyVoice.start_talking()
 	pass # Replace with function body.
 
 
@@ -19,3 +19,7 @@ func _process(delta: float) -> void:
 func _on_player_hit() -> void:
 	$Death_Screen.show_message()
 	#pass # Replace with function body.
+
+
+func _on_lucy_voice_scrape_play() -> void:
+	$LucyVoice/knifescrape.play() # Replace with function body.
