@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
-[ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://Scenes/player.tscn" id="2_owd1m"]
+[ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
 [ext_resource type="AudioStream" uid="uid://7olkjf6tbvhq" path="res://audio/Grass.mp3" id="3_n2jv4"]
-[ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://Scenes/lucyvoice.tscn" id="3_odk8b"]
-[ext_resource type="PackedScene" uid="uid://w8fyrwg2nbuo" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
+[ext_resource type="PackedScene" uid="uid://bflqk4x6jx4mo" path="res://Scenes/lucyvoice.tscn" id="3_odk8b"]
+[ext_resource type="PackedScene" uid="uid://clx607a52rmqd" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_r8gia"]
@@ -40,8 +40,8 @@ stream = ExtResource("5_kxich")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -2
-offset_right = 364.0
-offset_bottom = 40.0
+offset_right = 1168.0
+offset_bottom = 648.0
 texture = ExtResource("6_f3m6a")
 expand_mode = 2
 stretch_mode = 6
