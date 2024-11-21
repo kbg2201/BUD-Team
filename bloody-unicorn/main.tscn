@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_jqwt7"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_31q2a"]
-[ext_resource type="PackedScene" uid="uid://dlpavsu6heed3" path="res://Scenes/lucyvoice.tscn" id="3_rwd7k"]
+[ext_resource type="PackedScene" uid="uid://bflqk4x6jx4mo" path="res://Scenes/lucyvoice.tscn" id="3_rwd7k"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="4_edq15"]
 [ext_resource type="Texture2D" uid="uid://dqbgf3rtfle75" path="res://assets/adve/tiles.png" id="5_d23io"]
 [ext_resource type="Texture2D" uid="uid://kwsy1x6qymlp" path="res://assets/img/Tree_1_128b.png" id="6_ew40u"]

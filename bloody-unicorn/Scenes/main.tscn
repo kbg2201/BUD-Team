@@ -12,9 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://durgkfblkydn0" path="res://Scenes/map.tscn" id="10_red1e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
-vertices = PackedVector2Array(1150.85, 624.148, 28.0938, 641.828, 33.8984, 37.8906, 1142.14, 26.1016)
+vertices = PackedVector2Array(1025.07, 226.969, 1027.92, 616.75, 368.969, 601.219, 368.023, 225.023)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1152, 16, 1161, 634, 18, 652, 24, 28)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1035, 217, 1038, 627, 359, 611, 358, 215)])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lw3j"]
 shader = ExtResource("8_r8gia")
@@ -35,6 +35,11 @@ stream = ExtResource("3_n2jv4")
 [node name="GrassTimer" type="Timer" parent="Player"]
 one_shot = true
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.3, 1.3)
+position_smoothing_enabled = true
+rotation_smoothing_speed = 10.0
+
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
 
 [node name="knifescrape" type="AudioStreamPlayer2D" parent="LucyVoice"]
@@ -49,10 +54,11 @@ expand_mode = 2
 stretch_mode = 6
 
 [node name="EnemyUnicorn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4eyku")]
-position = Vector2(1300, 750)
+position = Vector2(1895, 460)
 player = NodePath("../Player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(1011, 73)
 navigation_polygon = SubResource("NavigationPolygon_o3qb5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -69,6 +75,7 @@ grow_vertical = 2
 visible = false
 
 [node name="TileMap" parent="." instance=ExtResource("10_red1e")]
+position = Vector2(548, 225)
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
