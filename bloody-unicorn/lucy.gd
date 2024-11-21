@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+signal scrape_play
+
+var can_talk = true
+
 #var voice = GDSAM.new()
 #var audiostream = AudioStreamPlayer.new()
 
@@ -31,7 +35,7 @@ var thingsLucySaysWhenSheIsAboutToKillYou = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	start_talking()
+	#start_talking()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,7 +50,7 @@ func start_talking():
 		sentinel += 1
 		await get_tree().create_timer(float((randi()%3)+1)).timeout
 		speak(thingsLucySaysWhenSheIsAboutToKillYou) #changed for effect
-		$knifescrape.play() 
+		scrape_play.emit()
 		await get_tree().create_timer(float((randi()%3)+1)).timeout
 		$LucyVoice/BlackBcgdMap.visible = false
 		$LucyVoice.text = ""
@@ -54,15 +58,16 @@ func start_talking():
 
 #pass an array of strings to this function
 func speak(msg):
-	$LucyVoice/BlackBcgdMap.visible = true
-	#change position of text within the window
-	var windowHalfX = (get_window().get_size_with_decorations().x)/2
-	var windowHalfY = (get_window().get_size_with_decorations().y)/2
-	$LucyVoice.position = Vector2(
-		randi()%(windowHalfX-101)+100,
-		randi()%(windowHalfY-101)+100
-		)
-	#output random string from array
-	var text = msg[randi() % msg.size()]
-	$LucyVoice.text = text
-	#voice.speak(audiostream,text)
+	if can_talk == true:
+		$LucyVoice/BlackBcgdMap.visible = true
+		#change position of text within the window
+		var windowHalfX = (get_window().get_size_with_decorations().x)/2
+		var windowHalfY = (get_window().get_size_with_decorations().y)/2
+		$LucyVoice.position = Vector2(
+			randi()%(windowHalfX-101)+100,
+			randi()%(windowHalfY-101)+100
+			)
+		#output random string from array
+		var text = msg[randi() % msg.size()]
+		$LucyVoice.text = text
+		#voice.speak(audiostream,text)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=17 format=4 uid="uid://cqbcghlyxc0nr"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jqwt7"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_31q2a"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cigiejsxpnsdn" path="res://assets/img/pixel art tree triangular-1.png.png" id="8_nei7i"]
 [ext_resource type="Texture2D" uid="uid://bojyiu1bmy1sf" path="res://assets/img/pixel art tree standard-1.png.png" id="9_ohkps"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31fmb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbgob"]
 texture = ExtResource("5_d23io")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -518,7 +518,7 @@ texture_region_size = Vector2i(8, 8)
 22:20/0 = 0
 23:20/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpcml"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dufux"]
 texture = ExtResource("4_edq15")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -1474,7 +1474,7 @@ texture_region_size = Vector2i(8, 8)
 26:33/0 = 0
 27:33/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l5mxa"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d42gy"]
 texture = ExtResource("6_ew40u")
 texture_region_size = Vector2i(8, 8)
 1:0/0 = 0
@@ -1607,7 +1607,7 @@ texture_region_size = Vector2i(8, 8)
 10:15/0 = 0
 11:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3wcnt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bj5m"]
 texture = ExtResource("7_dylg1")
 texture_region_size = Vector2i(8, 8)
 17:2/0 = 0
@@ -2066,7 +2066,7 @@ texture_region_size = Vector2i(8, 8)
 15:31/0 = 0
 16:31/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7yhqw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6csdo"]
 texture = ExtResource("8_nei7i")
 texture_region_size = Vector2i(8, 8)
 7:1/0 = 0
@@ -2117,7 +2117,7 @@ texture_region_size = Vector2i(8, 8)
 7:14/0 = 0
 8:14/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q6a4j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_48wg8"]
 texture = ExtResource("9_ohkps")
 texture_region_size = Vector2i(8, 8)
 1:2/0 = 0
@@ -2180,19 +2180,21 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_6i4qn"]
 tile_size = Vector2i(8, 8)
 terrain_set_0/mode = 0
-sources/0 = SubResource("TileSetAtlasSource_31fmb")
-sources/1 = SubResource("TileSetAtlasSource_xpcml")
-sources/2 = SubResource("TileSetAtlasSource_l5mxa")
-sources/3 = SubResource("TileSetAtlasSource_3wcnt")
-sources/4 = SubResource("TileSetAtlasSource_7yhqw")
-sources/5 = SubResource("TileSetAtlasSource_q6a4j")
+sources/0 = SubResource("TileSetAtlasSource_lbgob")
+sources/1 = SubResource("TileSetAtlasSource_dufux")
+sources/2 = SubResource("TileSetAtlasSource_d42gy")
+sources/3 = SubResource("TileSetAtlasSource_3bj5m")
+sources/4 = SubResource("TileSetAtlasSource_6csdo")
+sources/5 = SubResource("TileSetAtlasSource_48wg8")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jqwt7")
 
 [node name="Player" parent="." instance=ExtResource("2_31q2a")]
+position = Vector2(570, 312)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+position = Vector2(-6, 11)
 remote_path = NodePath("../../Camera2D")
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_rwd7k")]
@@ -2206,7 +2208,7 @@ expand_mode = 2
 stretch_mode = 6
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(602, 225)
+position = Vector2(549, 225)
 rotation = 1.56001
 scale = Vector2(0.817671, 0.935031)
 tile_set = SubResource("TileSet_6i4qn")
@@ -2236,4 +2238,4 @@ use_parent_material = true
 tile_set = SubResource("TileSet_6i4qn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(603, 328)
+position = Vector2(564, 323)
