@@ -2,6 +2,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Death_Screen.hide()
 	#set background size (this is bad and sucks)
 	$TextureRect.size = Vector2i(
 		get_window().get_size_with_decorations().x,
@@ -17,6 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_player_hit() -> void:
+	$Death_Screen.show()
 	$Death_Screen.show_message()
 	$LucyVoice.can_talk = false
 	#pass # Replace with function body.

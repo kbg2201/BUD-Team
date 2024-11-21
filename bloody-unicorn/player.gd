@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 500
+@export var speed = 300
 var screen_size
 var can_move
 
@@ -41,7 +41,7 @@ func _process(delta):
 		
 	
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	#position = position.clamp(Vector2.ZERO, screen_size)
 	
 	#if velocity.x != 0:
 		#$AnimatedSprite2D.animation = "down"

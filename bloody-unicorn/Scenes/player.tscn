@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boorxy8t6uaci"]
+[gd_scene load_steps=9 format=3 uid="uid://de1o8styvx21d"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ac0y6"]
 [ext_resource type="Texture2D" uid="uid://dojuybb8b3b5p" path="res://art/Nadia-1.png.png" id="2_pg4jl"]
@@ -33,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7jkj"]
-size = Vector2(92, 113)
+size = Vector2(46, 80)
 
 [node name="Player" type="Area2D"]
 position = Vector2(603, 328)
@@ -41,13 +41,12 @@ script = ExtResource("1_ac0y6")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_smjhp")
 animation = &"down"
+frame_progress = 0.382524
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_f7jkj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
