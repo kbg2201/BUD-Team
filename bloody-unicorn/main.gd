@@ -14,3 +14,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_player_hit() -> void:
+	$Death_Screen.show_message()
+	#pass # Replace with function body.

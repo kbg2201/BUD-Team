@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqin2bn47hlda"]
+[gd_scene load_steps=5 format=3 uid="uid://bqin2bn47hlda"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_700qu"]
 [ext_resource type="Texture2D" uid="uid://y0w37vu8skwr" path="res://assets/bloody unicorn.png" id="2_kcqqj"]
+[ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="3_bgcp2"]
 
 [sub_resource type="GDScript" id="GDScript_ip21y"]
 script/source = "extends Button
@@ -49,6 +50,16 @@ size_flags_vertical = 4
 position = Vector2(0, -70)
 scale = Vector2(0.504687, 0.550926)
 texture = ExtResource("2_kcqqj")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
+z_index = -1
+layout_mode = 2
+offset_left = -597.0
+offset_top = -388.0
+offset_right = 600.0
+offset_bottom = 365.0
+size_flags_horizontal = 4
+texture = ExtResource("3_bgcp2")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 visible = false
