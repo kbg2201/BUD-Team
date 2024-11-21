@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 
 func _on_player_hit() -> void:
 	$Death_Screen.show_message()
+	$LucyVoice.can_talk = false
 	#pass # Replace with function body.
 
 

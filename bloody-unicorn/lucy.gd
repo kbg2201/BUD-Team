@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal scrape_play
 
+var can_talk = true
+
 #var voice = GDSAM.new()
 #var audiostream = AudioStreamPlayer.new()
 
@@ -56,15 +58,16 @@ func start_talking():
 
 #pass an array of strings to this function
 func speak(msg):
-	$LucyVoice/BlackBcgdMap.visible = true
-	#change position of text within the window
-	var windowHalfX = (get_window().get_size_with_decorations().x)/2
-	var windowHalfY = (get_window().get_size_with_decorations().y)/2
-	$LucyVoice.position = Vector2(
-		randi()%(windowHalfX-101)+100,
-		randi()%(windowHalfY-101)+100
-		)
-	#output random string from array
-	var text = msg[randi() % msg.size()]
-	$LucyVoice.text = text
-	#voice.speak(audiostream,text)
+	if can_talk == true:
+		$LucyVoice/BlackBcgdMap.visible = true
+		#change position of text within the window
+		var windowHalfX = (get_window().get_size_with_decorations().x)/2
+		var windowHalfY = (get_window().get_size_with_decorations().y)/2
+		$LucyVoice.position = Vector2(
+			randi()%(windowHalfX-101)+100,
+			randi()%(windowHalfY-101)+100
+			)
+		#output random string from array
+		var text = msg[randi() % msg.size()]
+		$LucyVoice.text = text
+		#voice.speak(audiostream,text)
