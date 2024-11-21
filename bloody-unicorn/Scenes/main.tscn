@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=12 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://boorxy8t6uaci" path="res://Scenes/player.tscn" id="2_owd1m"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_r8gia"]
+[ext_resource type="PackedScene" uid="uid://b2t6p61sv7j5r" path="res://death_screen.tscn" id="9_jlu5d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
 vertices = PackedVector2Array(1150.85, 624.148, 28.0938, 641.828, 33.8984, 37.8906, 1142.14, 26.1016)
@@ -61,3 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
+
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]

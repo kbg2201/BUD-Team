@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2t6p61sv7j5r"]
+
+[ext_resource type="Script" path="res://death_screen.gd" id="1_tpw61"]
+[ext_resource type="FontFile" uid="uid://dmsqslo6uor21" path="res://assets/fonts/BloodlettingLegacy.ttf" id="2_nawe6"]
+
+[node name="Death_Screen" type="CanvasLayer"]
+script = ExtResource("1_tpw61")
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -55.0
+offset_right = 136.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nawe6")
+theme_override_font_sizes/font_size = 80
+text = "DEAD"
+horizontal_alignment = 1
+
+[node name="Dimmer" type="ColorRect" parent="Message"]
+z_index = -1
+layout_mode = 0
+offset_left = -466.0
+offset_top = -280.0
+offset_right = 782.0
+offset_bottom = 440.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
