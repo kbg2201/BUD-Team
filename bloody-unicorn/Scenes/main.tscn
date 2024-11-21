@@ -66,3 +66,4 @@ grow_vertical = 2
 [node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]

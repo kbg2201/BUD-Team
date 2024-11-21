@@ -10,7 +10,7 @@ void fragment() {
 	vec3 color = texture(SCREEN_TEXTURE, screen_uv).rgb * (1.0 - crt_brightness - 0.5);
 	color += texture(SCREEN_TEXTURE, screen_uv - vec2(SCREEN_PIXEL_SIZE.x * crt_ghost, 0.0)).rgb;
 	//color += texture(SCREEN_TEXTURE, screen_uv + vec2(SCREEN_PIXEL_SIZE.x * crt_ghost, 0.0)).rgb;
-	color *= crt_brightness * 2.0;
+	color *= crt_brightness * 3.0;
 
 	float crt_grid_uv = mod(screen_uv.x / SCREEN_PIXEL_SIZE.x, 3.0);
 	vec3 crt_grid_color;
