@@ -30,4 +30,9 @@ func _on_light_timer_timeout() -> void:
 		$AnimationPlayer.play("flicker")
 	if show_light == true:
 		$AnimationPlayer.play("flicker")
+		$Hum.play()
 		show_light = false
+
+
+func _on_hum_finished() -> void:
+	$Hum.play()
