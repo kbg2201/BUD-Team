@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqin2bn47hlda"]
+[gd_scene load_steps=14 format=3 uid="uid://bqin2bn47hlda"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_700qu"]
 [ext_resource type="Texture2D" uid="uid://y0w37vu8skwr" path="res://assets/bloody unicorn.png" id="2_kcqqj"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="3_bgcp2"]
 [ext_resource type="Texture2D" uid="uid://cdlyqaudniicf" path="res://assets/img/light.png" id="4_fsmo0"]
 [ext_resource type="AudioStream" uid="uid://nobo2q2fcrka" path="res://audio/Flourecent-Buzz.wav" id="5_mrpqc"]
+[ext_resource type="AudioStream" uid="uid://dlgy2y75ywd4t" path="res://audio/Fluorecent-Flicker.wav" id="6_4v5qp"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="7_n3q6w"]
 
 [sub_resource type="GDScript" id="GDScript_ip21y"]
 script/source = "extends Button
@@ -72,7 +74,7 @@ tracks/0/path = NodePath("VBoxContainer/StartButton/PointLight2D:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.3, 0.5),
+"times": PackedFloat32Array(0, 0.160381, 0.3, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -84,6 +86,12 @@ _data = {
 "fade_in": SubResource("Animation_qhbrb"),
 "flicker": SubResource("Animation_rupbs")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1g5p"]
+shader = ExtResource("7_n3q6w")
+shader_parameter/crt_brightness = 1.0
+shader_parameter/crt_ghost = 3.0
+shader_parameter/crt_grid = 0.4
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -178,6 +186,28 @@ autostart = true
 
 [node name="Hum" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_mrpqc")
+
+[node name="Flicker" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4v5qp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -4
+material = SubResource("ShaderMaterial_t1g5p")
+anchors_preset = -1
+anchor_left = -1.27
+anchor_top = -1.676
+anchor_right = 3.911
+anchor_bottom = 4.344
+offset_left = 83.0402
+offset_top = 0.0480957
+offset_right = 0.527832
+offset_bottom = 0.0878906
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

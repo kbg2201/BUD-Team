@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal scrape_play
+signal scrape_stop
 
 var can_talk = true
 
@@ -46,7 +47,7 @@ func _process(delta: float) -> void:
 func start_talking():
 	var sentinel = 0
 	while(true and sentinel<1000):
-		$knifescrape.stop()
+		scrape_stop.emit()
 		sentinel += 1
 		await get_tree().create_timer(float((randi()%3)+1)).timeout
 		speak(thingsLucySaysWhenSheIsAboutToKillYou) #changed for effect

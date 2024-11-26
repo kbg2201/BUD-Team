@@ -25,4 +25,8 @@ func _on_player_hit() -> void:
 
 
 func _on_lucy_voice_scrape_play() -> void:
-	$LucyVoice/knifescrape.play() # Replace with function body.
+	$EnemyUnicorn/knifescrape.play() # Replace with function body.
+
+
+func _on_lucy_voice_scrape_stop() -> void:
+	$EnemyUnicorn/knifescrape.stop()
