@@ -162,6 +162,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="timeout" from="Text_Timer" to="." method="_on_text_timer_timeout"]
 [connection signal="timeout" from="Text_Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Text_Timer" to="." method="_on_text_timer_timeout"]
 [connection signal="timeout" from="Transition_Timer" to="." method="_on_transition_timer_timeout"]

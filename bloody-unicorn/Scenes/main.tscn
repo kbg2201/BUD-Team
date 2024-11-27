@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=15 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b2t6p61sv7j5r" path="res://Scenes/death_screen.tscn" id="9_jlu5d"]
 [ext_resource type="PackedScene" uid="uid://durgkfblkydn0" path="res://Scenes/map.tscn" id="10_red1e"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="11_jau13"]
+[ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://pause_menu.tscn" id="12_24puq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
 vertices = PackedVector2Array(1025.07, 226.969, 1027.92, 616.75, 368.969, 601.219, 368.023, 225.023)
@@ -96,6 +97,9 @@ texture = ExtResource("11_jau13")
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
 
+[node name="PauseMenu" parent="." instance=ExtResource("12_24puq")]
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
 [connection signal="scrape_stop" from="LucyVoice" to="." method="_on_lucy_voice_scrape_stop"]
+[connection signal="resumed" from="PauseMenu" to="." method="_on_pause_menu_resumed"]
