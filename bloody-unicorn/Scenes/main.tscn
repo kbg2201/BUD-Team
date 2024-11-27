@@ -42,10 +42,8 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 10.0
 
-[node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
-
-[node name="knifescrape" type="AudioStreamPlayer2D" parent="LucyVoice"]
-stream = ExtResource("5_kxich")
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+current = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -2
@@ -58,6 +56,9 @@ stretch_mode = 6
 [node name="EnemyUnicorn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4eyku")]
 position = Vector2(1895, 460)
 player = NodePath("../Player")
+
+[node name="knifescrape" type="AudioStreamPlayer2D" parent="EnemyUnicorn"]
+stream = ExtResource("5_kxich")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(1011, 73)
@@ -93,5 +94,8 @@ offset_bottom = 385.0
 scale = Vector2(-6.10996, 2.15471)
 texture = ExtResource("11_jau13")
 
+[node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
+[connection signal="scrape_stop" from="LucyVoice" to="." method="_on_lucy_voice_scrape_stop"]

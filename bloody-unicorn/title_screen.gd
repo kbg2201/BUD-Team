@@ -12,7 +12,6 @@ func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 	
 
-
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
@@ -25,11 +24,13 @@ func _on_animation_timer_timeout() -> void:
 
 
 func _on_light_timer_timeout() -> void:
-	var rand = randi_range(0, 3)
+	var rand = randi_range(0, 5)
 	if rand == 1:
 		$AnimationPlayer.play("flicker")
+		$Flicker.play()
 	if show_light == true:
 		$AnimationPlayer.play("flicker")
+		$Flicker.play()
 		$Hum.play()
 		show_light = false
 
