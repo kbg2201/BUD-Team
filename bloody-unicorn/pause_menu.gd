@@ -4,7 +4,6 @@ signal resumed
 
 func show_pause_menu():
 	$Dimmer.show()
-	$CanvasLayer.show()
 	$Message.show()
 	$ResumeButton.show()
 	$QuitButton.show()
@@ -12,7 +11,6 @@ func show_pause_menu():
 func resume():
 	$Dimmer.hide()
 	$Message.hide()
-	$CanvasLayer.hide()
 	$ResumeButton.hide()
 	$QuitButton.hide()
 	resumed.emit()
@@ -21,7 +19,6 @@ func resume():
 func _ready() -> void:
 	$Dimmer.hide()
 	$Message.hide()
-	$CanvasLayer.hide()
 	$ResumeButton.hide()
 	$QuitButton.hide()
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5848wl82w3i5"]
+[gd_scene load_steps=11 format=3 uid="uid://c5848wl82w3i5"]
 
 [ext_resource type="Script" path="res://headphones_screen.gd" id="1_x1l12"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="2_b1iay"]
 [ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="3_a7srf"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_q4e6u"]
+[ext_resource type="Texture2D" uid="uid://ct7cd0ndqhkkb" path="res://art/headphones-temp.png" id="4_yf2k1"]
 
 [sub_resource type="Animation" id="Animation_py5if"]
 length = 0.001
@@ -100,13 +101,28 @@ libraries = {
 "": SubResource("AnimationLibrary_46lyc")
 }
 
-[node name="AnimationRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -25.0
-offset_top = -19.0
-offset_right = 1308.0
-offset_bottom = 752.0
-texture = ExtResource("2_b1iay")
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="HoldTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -285.0
+offset_right = 75.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_yf2k1")
+expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -117,18 +133,20 @@ anchor_left = -1.27
 anchor_top = -1.676
 anchor_right = 3.911
 anchor_bottom = 4.344
-offset_left = 83.0402
-offset_top = 0.0480957
-offset_right = 0.527832
-offset_bottom = 0.0878906
+offset_left = -34.4
+offset_top = 281.72
+offset_right = -116.912
+offset_bottom = 281.76
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationTimer" type="Timer" parent="."]
-wait_time = 2.0
-
-[node name="HoldTimer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="AnimationRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -19.0
+offset_right = 1308.0
+offset_bottom = 752.0
+texture = ExtResource("2_b1iay")
 
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
 [connection signal="timeout" from="HoldTimer" to="." method="_on_hold_timer_timeout"]

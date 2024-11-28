@@ -137,6 +137,7 @@ size_flags_horizontal = 4
 texture = ExtResource("3_bgcp2")
 
 [node name="AnimationRect" type="TextureRect" parent="VBoxContainer/Panel"]
+visible = false
 layout_mode = 1
 offset_left = -847.0
 offset_top = -556.0

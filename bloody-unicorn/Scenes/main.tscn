@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://pause_menu.tscn" id="12_24puq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
-vertices = PackedVector2Array(1025.07, 226.969, 1027.92, 616.75, 368.969, 601.219, 368.023, 225.023)
+vertices = PackedVector2Array(1030.05, -59.1328, 1033.94, 627.078, -1006.14, 643.922, -1094.69, -88.8438)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1035, 217, 1038, 627, 359, 611, 358, 215)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1040, -69, 1044, 637, -1015, 654, -1106, -99)])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lw3j"]
 shader = ExtResource("8_r8gia")
@@ -65,22 +65,6 @@ stream = ExtResource("5_kxich")
 position = Vector2(1011, 73)
 navigation_polygon = SubResource("NavigationPolygon_o3qb5")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_8lw3j")
-anchors_preset = -1
-anchor_left = -1.27
-anchor_top = -1.676
-anchor_right = 3.911
-anchor_bottom = 4.344
-offset_left = 83.0402
-offset_top = 0.0480957
-offset_right = 0.527832
-offset_bottom = 0.0878906
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
 
 [node name="TileMap" parent="." instance=ExtResource("10_red1e")]
@@ -98,6 +82,23 @@ texture = ExtResource("11_jau13")
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_24puq")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8lw3j")
+anchors_preset = -1
+anchor_left = -1.27
+anchor_top = -1.676
+anchor_right = 3.911
+anchor_bottom = 4.344
+offset_left = 83.0402
+offset_top = 0.0480957
+offset_right = 0.527832
+offset_bottom = 0.0878906
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]

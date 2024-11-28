@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2t6p61sv7j5r"]
+[gd_scene load_steps=8 format=3 uid="uid://b2t6p61sv7j5r"]
 
 [ext_resource type="Script" path="res://death_screen.gd" id="1_tpw61"]
 [ext_resource type="FontFile" uid="uid://dmsqslo6uor21" path="res://assets/fonts/BloodlettingLegacy.ttf" id="2_nawe6"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="3_l84dw"]
-[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_m6b0s"]
 
 [sub_resource type="Animation" id="Animation_q6gue"]
 length = 0.001
@@ -95,12 +94,6 @@ _data = {
 "fade_out": SubResource("Animation_jal85")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp20c"]
-shader = ExtResource("4_m6b0s")
-shader_parameter/crt_brightness = 1.0
-shader_parameter/crt_ghost = 3.0
-shader_parameter/crt_grid = 0.4
-
 [node name="Death_Screen" type="CanvasLayer"]
 script = ExtResource("1_tpw61")
 
@@ -151,16 +144,6 @@ texture = ExtResource("3_l84dw")
 
 [node name="Transition_Timer" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_pp20c")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="timeout" from="Text_Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Text_Timer" to="." method="_on_text_timer_timeout"]
