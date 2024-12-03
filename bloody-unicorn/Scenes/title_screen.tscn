@@ -122,6 +122,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Panel"]
+visible = false
 position = Vector2(0, -70)
 scale = Vector2(0.504687, 0.550926)
 texture = ExtResource("2_kcqqj")
@@ -209,6 +210,11 @@ offset_bottom = 0.0878906
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -73)
+scale = Vector2(0.511458, 0.611111)
+texture = ExtResource("2_kcqqj")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
