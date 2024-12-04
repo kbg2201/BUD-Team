@@ -4,7 +4,11 @@ extends Area2D
 var screen_size
 var can_move
 
+@onready var all_interactions = []
+@onready var interact_label = $InteractionComponents/InteractLabel
+
 signal hit
+signal destroy
 
 #get the player ready in the window and hide them until the game starts
 func _ready():
@@ -51,6 +55,9 @@ func _process(delta):
 	#elif velocity.y != 0:
 		#$AnimatedSprite2D.animation = "up"
 		#$AnimatedSprite2D.flip_v = velocity.y > 0
+	
+	if Input.is_action_just_pressed("interact"):
+		exectute_interactions()
 
 func _on_body_entered(body):
 	hide()
@@ -64,3 +71,25 @@ func start(pos):
 	show()
 	can_move = true
 	$CollisionShape2D.disabled = false
+
+
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	all_interactions.insert(0, area)
+	update_interactions()
+
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	all_interactions.erase(area)
+	update_interactions()
+
+func update_interactions():
+	if all_interactions:
+		interact_label.text = "[Z]"
+	else:
+		interact_label.text = ""
+	
+func exectute_interactions():
+	if all_interactions:
+		var current_interaction = all_interactions[0]
+		match current_interaction.interact_type:
+			"destroy" : destroy.emit()

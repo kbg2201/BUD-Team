@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=17 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://durgkfblkydn0" path="res://Scenes/map.tscn" id="10_red1e"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="11_jau13"]
 [ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://pause_menu.tscn" id="12_24puq"]
+[ext_resource type="PackedScene" uid="uid://dy530kled6bw" path="res://Scenes/rock.tscn" id="13_q88vx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
 vertices = PackedVector2Array(1032.06, 276.844, 1033.93, 555, 658.719, 555, 678.32, 271.148)
@@ -88,6 +89,10 @@ texture = ExtResource("11_jau13")
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_24puq")]
 
+[node name="Rock" parent="." instance=ExtResource("13_q88vx")]
+position = Vector2(962, 581)
+scale = Vector2(2, 2)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -105,6 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[connection signal="destroy" from="Player" to="." method="_destroy"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
 [connection signal="scrape_stop" from="LucyVoice" to="." method="_on_lucy_voice_scrape_stop"]

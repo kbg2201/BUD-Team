@@ -52,3 +52,7 @@ func _on_pause_menu_resumed() -> void:
 	$LucyVoice.can_talk = true
 	$Player.can_move = true
 	pass # Replace with function body.
+
+
+func _destroy() -> void:
+	$Rock.queue_free()

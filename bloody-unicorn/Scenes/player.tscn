@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://de1o8styvx21d"]
+[gd_scene load_steps=11 format=3 uid="uid://de1o8styvx21d"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ac0y6"]
 [ext_resource type="Texture2D" uid="uid://dojuybb8b3b5p" path="res://art/Nadia-1.png.png" id="2_pg4jl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b22u8ntca0ed7" path="res://art/Nadia-3.png.png" id="4_6nie5"]
 [ext_resource type="Texture2D" uid="uid://be5axq4jv26pl" path="res://art/Nadia-4.png.png" id="5_28u4i"]
 [ext_resource type="Texture2D" uid="uid://cdlyqaudniicf" path="res://assets/img/light.png" id="6_50xna"]
+[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="7_wkti7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smjhp"]
 animations = [{
@@ -33,10 +34,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7jkj"]
-size = Vector2(46, 80)
+size = Vector2(66, 133)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fo2cr"]
+radius = 175.003
 
 [node name="Player" type="Area2D"]
 position = Vector2(603, 328)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_ac0y6")
 metadata/_edit_group_ = true
 
@@ -47,6 +53,7 @@ animation = &"down"
 frame_progress = 0.382524
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 7.5)
 shape = SubResource("RectangleShape2D_f7jkj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -63,4 +70,33 @@ shadow_enabled = true
 texture = ExtResource("6_50xna")
 texture_scale = 4.0
 
+[node name="InteractionComponents" type="Node2D" parent="."]
+z_index = 1
+
+[node name="InteractionArea" type="Area2D" parent="InteractionComponents"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/InteractionArea"]
+shape = SubResource("CircleShape2D_fo2cr")
+
+[node name="InteractLabel" type="Label" parent="InteractionComponents"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -123.5
+offset_right = 20.0
+offset_bottom = -100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_wkti7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
