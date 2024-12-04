@@ -8,7 +8,7 @@ var can_move
 @onready var interact_label = $InteractionComponents/InteractLabel
 
 signal hit
-signal destroy
+signal rock_destroy
 
 #get the player ready in the window and hide them until the game starts
 func _ready():
@@ -92,4 +92,4 @@ func exectute_interactions():
 	if all_interactions:
 		var current_interaction = all_interactions[0]
 		match current_interaction.interact_type:
-			"destroy" : destroy.emit()
+			"rock_destroy" : rock_destroy.emit()

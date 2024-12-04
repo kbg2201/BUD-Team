@@ -110,8 +110,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="destroy" from="Player" to="." method="_destroy"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="rock_destroy" from="Player" to="." method="_rock_destroy"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
 [connection signal="scrape_stop" from="LucyVoice" to="." method="_on_lucy_voice_scrape_stop"]
 [connection signal="resumed" from="PauseMenu" to="." method="_on_pause_menu_resumed"]

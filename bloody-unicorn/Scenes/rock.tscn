@@ -13,7 +13,7 @@ texture = ExtResource("1_7ry65")
 
 [node name="InteractArea" parent="." instance=ExtResource("2_kmvvv")]
 interact_label = "[Z]"
-interact_type = "destroy"
+interact_type = "rock_destroy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

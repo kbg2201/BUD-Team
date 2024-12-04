@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://headphones_screen.gd" id="1_x1l12"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="2_b1iay"]
 [ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="3_a7srf"]
+[ext_resource type="Texture2D" uid="uid://by6dflg4o2leb" path="res://assets/img/headphones.png" id="4_mfrst"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_q4e6u"]
-[ext_resource type="Texture2D" uid="uid://ct7cd0ndqhkkb" path="res://art/headphones-temp.png" id="4_yf2k1"]
 
 [sub_resource type="Animation" id="Animation_py5if"]
 length = 0.001
@@ -110,18 +110,18 @@ wait_time = 3.0
 [node name="TextureRect2" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -285.0
-offset_right = 75.0
-offset_bottom = -141.0
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = 42.0
+offset_right = 114.5
+offset_bottom = 262.0
 grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_yf2k1")
+grow_vertical = 2
+texture = ExtResource("4_mfrst")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

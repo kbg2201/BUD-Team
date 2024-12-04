@@ -19,7 +19,7 @@ func _on_quit_button_pressed() -> void:
 func _on_animation_timer_timeout() -> void:
 	$VBoxContainer/StartButton.show()
 	$VBoxContainer/QuitButton.show()
-	$VBoxContainer/Panel/AnimationRect.hide()
+	$AnimationRect.hide()
 	#pass # Replace with function body.
 
 

@@ -54,5 +54,5 @@ func _on_pause_menu_resumed() -> void:
 	pass # Replace with function body.
 
 
-func _destroy() -> void:
+func _rock_destroy() -> void:
 	$Rock.queue_free()
