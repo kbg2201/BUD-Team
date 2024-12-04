@@ -33,6 +33,7 @@ func _on_player_hit() -> void:
 	$Death_Screen.show()
 	$Death_Screen.show_message()
 	$LucyVoice.can_talk = false
+	$Player/DeathNoise.play()
 	#pass # Replace with function body.
 
 
