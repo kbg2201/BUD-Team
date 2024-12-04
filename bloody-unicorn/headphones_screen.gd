@@ -9,7 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 
 func _on_animation_timer_timeout() -> void:
 	if count == 1:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=16 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
 [ext_resource type="AudioStream" uid="uid://7olkjf6tbvhq" path="res://audio/Grass.mp3" id="3_n2jv4"]
 [ext_resource type="PackedScene" uid="uid://bflqk4x6jx4mo" path="res://Scenes/lucyvoice.tscn" id="3_odk8b"]
+[ext_resource type="AudioStream" uid="uid://dhco8vmm8aha4" path="res://audio/Player-Death.wav" id="4_37tpt"]
 [ext_resource type="PackedScene" uid="uid://clx607a52rmqd" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
@@ -14,9 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://pause_menu.tscn" id="12_24puq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
-vertices = PackedVector2Array(1030.05, -59.1328, 1033.94, 627.078, -1006.14, 643.922, -1094.69, -88.8438)
+vertices = PackedVector2Array(1032.06, 276.844, 1033.93, 555, 658.719, 555, 678.32, 271.148)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1040, -69, 1044, 637, -1015, 654, -1106, -99)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1042, 267, 1044, 565, 648, 565, 669, 261)])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lw3j"]
 shader = ExtResource("8_r8gia")
@@ -45,6 +46,10 @@ rotation_smoothing_speed = 10.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Player"]
 current = true
+
+[node name="DeathNoise" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("4_37tpt")
+volume_db = -13.56
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -2
@@ -92,10 +97,10 @@ anchor_left = -1.27
 anchor_top = -1.676
 anchor_right = 3.911
 anchor_bottom = 4.344
-offset_left = 83.0402
-offset_top = 0.0480957
-offset_right = 0.527832
-offset_bottom = 0.0878906
+offset_left = 77.6
+offset_top = 58.72
+offset_right = -4.91211
+offset_bottom = 58.7595
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
