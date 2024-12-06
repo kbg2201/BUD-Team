@@ -6,11 +6,6 @@ var can_talk = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Death_Screen.hide()
-	#set background size (this is bad and sucks)
-	$TextureRect.size = Vector2i(
-		get_window().get_size_with_decorations().x,
-		get_window().get_size_with_decorations().y
-	)
 	$LucyVoice.start_talking()
 	pass # Replace with function body.
 
@@ -33,6 +28,7 @@ func _on_player_hit() -> void:
 	$Death_Screen.show()
 	$Death_Screen.show_message()
 	$LucyVoice.can_talk = false
+	can_talk = false
 	$Player/DeathNoise.play()
 	#pass # Replace with function body.
 
@@ -51,8 +47,11 @@ func _on_pause_menu_resumed() -> void:
 	can_talk = true
 	$LucyVoice.can_talk = true
 	$Player.can_move = true
-	pass # Replace with function body.
 
 
 func _rock_destroy() -> void:
 	$Rock.queue_free()
+
+
+func _unicorn_activate() -> void:
+	$EnemyUnicorn.start_timer()

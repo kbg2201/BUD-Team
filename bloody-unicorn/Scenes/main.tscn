@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=16 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
@@ -7,18 +7,17 @@
 [ext_resource type="AudioStream" uid="uid://dhco8vmm8aha4" path="res://audio/Player-Death.wav" id="4_37tpt"]
 [ext_resource type="PackedScene" uid="uid://clx607a52rmqd" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
-[ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="6_f3m6a"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_r8gia"]
 [ext_resource type="PackedScene" uid="uid://b2t6p61sv7j5r" path="res://Scenes/death_screen.tscn" id="9_jlu5d"]
 [ext_resource type="PackedScene" uid="uid://durgkfblkydn0" path="res://Scenes/map.tscn" id="10_red1e"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="11_jau13"]
-[ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://pause_menu.tscn" id="12_24puq"]
+[ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://Scenes/pause_menu.tscn" id="12_24puq"]
 [ext_resource type="PackedScene" uid="uid://dy530kled6bw" path="res://Scenes/rock.tscn" id="13_q88vx"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_o3qb5"]
-vertices = PackedVector2Array(1032.06, 276.844, 1033.93, 555, 658.719, 555, 678.32, 271.148)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1042, 267, 1044, 565, 648, 565, 669, 261)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_l6hfg"]
+vertices = PackedVector2Array(671.078, 47.8672, 884.023, 233.797, 679.844, 202.273, 477.891, 18.0078, -25.0938, -475.758, -23, -717.531, -42.7813, -889, 723.094, -889, 730.953, -23.1016, 686.797, 8.57813, 1033.95, 222.758, 1031.96, 736.727, 1584.06, 1497.25, 1590.93, 2551.85, -17.6797, 2529.14, 862.398, 1515.27, 2456.16, 1122.92, 1825.26, 1118.07, 1836.13, 695.211, 2472.83, 106.891, 1832.75, 100.102, 1823.76, 464, 1743.36, 622.938, 1790, 495, -107.82, 583.852, -125.82, 1595.73, -793.82, 1578.25, -766.172, 14, -647.563, 14, -1159.08, -377.297, -1650.42, 9.96094, -1870.84, 8.07813, -1858.14, -828.344, -1589.75, -837.859, -1191.23, -471.313, -1027.16, -458.18, -1019.03, -365.273, 1610.96, 625.172, 1612.96, 1079, 1164, 1079, 1164, 865, 1163.87, 740.273, 1170.87, 193, 1622, 193, 1622, 528.094, 1790, 464, -48, 16.0313, -48, 1.21094, -39.7891, -387, -498.594, -12.2422, -103, -2.24219, -103, 426.047, 13.7031, 1502.02, 702.117, 1503.99, 769.297, 1516, 352.547, 423.961, 362.531, 210.148, 674.75, 215.109, 1027.27, 865, 1753.4, 526.922, 1755.39, 495, -614, -23.1484, -172.477, -479.219, -172.406, -387, 866, 1451.77, 763.883, 1298.23, 869.102, 1301.82, 1018.13, 1193.79, 381.297, 591.148, -164.633, -328.18, -388.391, -143.156, -504.461, -148.492, 370.141, 968.438, -614, -136.328, -869.43, -789.992, -393.102, -789, -177.781, -576.602, -836.031, -129.117, -1011.48, -301.656, -1024.06, -663.211)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(4, 5, 8, 9), PackedInt32Array(1, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 19, 18, 21), PackedInt32Array(21, 18, 22, 23), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(29, 30, 31, 32, 33, 34), PackedInt32Array(29, 34, 35, 36), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(41, 42, 43, 44, 37, 40), PackedInt32Array(23, 45, 21), PackedInt32Array(3, 46, 47, 48, 4), PackedInt32Array(49, 50, 51), PackedInt32Array(14, 52, 53, 54), PackedInt32Array(55, 56, 57, 1, 11, 58), PackedInt32Array(59, 60, 23), PackedInt32Array(59, 23, 22), PackedInt32Array(44, 59, 22, 37), PackedInt32Array(41, 40, 58, 11), PackedInt32Array(51, 24, 28, 61, 49), PackedInt32Array(4, 9, 0), PackedInt32Array(62, 4, 48, 63), PackedInt32Array(57, 2, 1), PackedInt32Array(15, 14, 54), PackedInt32Array(64, 15, 54, 65, 66), PackedInt32Array(55, 58, 67, 66, 65, 68), PackedInt32Array(63, 69, 70, 71), PackedInt32Array(65, 72, 68), PackedInt32Array(55, 68, 24, 51), PackedInt32Array(71, 49, 61, 73), PackedInt32Array(74, 75, 76, 62, 63, 71, 73, 77, 78, 36, 35, 79)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1044, 212, 1042, 727, 1154, 730, 1161, 183, 1632, 183, 1632, 518, 1744, 517, 1746, 485, 1780, 485, 1780, 454, 1814, 454, 1823, 90, 2483, 97, 2466, 1133, 1815, 1128, 1826, 700, 1740, 633, 1621, 635, 1623, 1089, 1154, 1089, 1154, 875, 1037, 875, 1028, 1199, 879, 1307, 876, 1452, 873, 1505, 1594, 1487, 1601, 2562, -28, 2539, 4, 1492, 703, 1494, 759, 1504, 754, 1303, 360, 973, 371, 601, -98, 594, -116, 1606, -804, 1588, -776, 4, -652, 4, -624, -27, -624, -126, -840, -119, -1021, -297, -1028, -356, -1156, -367, -1647, 20, -1881, 18, -1868, -838, -1586, -848, -1187, -481, -1037, -469, -1034, -668, -873, -800, -389, -799, -168, -581, -163, -489, -35, -486, -33, -717, -54, -899, 733, -899, 741, -18, 695, 15, 683, 45, 888, 224, 881, 224, 881, 224)])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lw3j"]
 shader = ExtResource("8_r8gia")
@@ -28,6 +27,10 @@ shader_parameter/crt_grid = 0.4
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tay2g")
+
+[node name="Rock" parent="." instance=ExtResource("13_q88vx")]
+position = Vector2(962, 581)
+scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_owd1m")]
 position = Vector2(554, 378)
@@ -52,14 +55,6 @@ current = true
 stream = ExtResource("4_37tpt")
 volume_db = -13.56
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -2
-offset_right = 1168.0
-offset_bottom = 648.0
-texture = ExtResource("6_f3m6a")
-expand_mode = 2
-stretch_mode = 6
-
 [node name="EnemyUnicorn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4eyku")]
 position = Vector2(1895, 460)
 player = NodePath("../Player")
@@ -68,8 +63,13 @@ player = NodePath("../Player")
 stream = ExtResource("5_kxich")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(1011, 73)
-navigation_polygon = SubResource("NavigationPolygon_o3qb5")
+navigation_polygon = SubResource("NavigationPolygon_l6hfg")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-58, 1, -50, -377, -161, -377, -154, -324, -385, -133, -494, -138, -489, -22, -93, -12, -93, 416, 343, 414, 353, 200, 668, 205, 474, 28, -58, 26)
 
 [node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
 
@@ -88,10 +88,6 @@ texture = ExtResource("11_jau13")
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_24puq")]
-
-[node name="Rock" parent="." instance=ExtResource("13_q88vx")]
-position = Vector2(962, 581)
-scale = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -112,6 +108,7 @@ mouse_filter = 2
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="rock_destroy" from="Player" to="." method="_rock_destroy"]
+[connection signal="unicorn_activate" from="Player" to="." method="_unicorn_activate"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
 [connection signal="scrape_stop" from="LucyVoice" to="." method="_on_lucy_voice_scrape_stop"]
 [connection signal="resumed" from="PauseMenu" to="." method="_on_pause_menu_resumed"]

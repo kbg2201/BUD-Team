@@ -148,5 +148,22 @@ offset_right = 1308.0
 offset_bottom = 752.0
 texture = ExtResource("2_b1iay")
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = -41.0
+offset_right = -40.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_a7srf")
+theme_override_font_sizes/font_size = 17
+text = "[SPACE] to skip"
+
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
 [connection signal="timeout" from="HoldTimer" to="." method="_on_hold_timer_timeout"]

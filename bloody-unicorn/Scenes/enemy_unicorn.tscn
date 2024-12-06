@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://clx607a52rmqd"]
+[gd_scene load_steps=8 format=3 uid="uid://clx607a52rmqd"]
 
 [ext_resource type="Script" path="res://enemy_unicorn.gd" id="1_gdphb"]
 [ext_resource type="Texture2D" uid="uid://16tp33ww2o6q" path="res://art/Lucy_v2.png" id="2_ftjhv"]
+[ext_resource type="PackedScene" uid="uid://b080xdjmc2aeb" path="res://Scenes/interact_area.tscn" id="3_ewwqm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq8t4"]
 atlas = ExtResource("2_ftjhv")
@@ -32,6 +33,7 @@ size = Vector2(110, 70)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_gdphb")
+type = "Unicorn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
@@ -47,4 +49,13 @@ autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="InteractArea" parent="." instance=ExtResource("3_ewwqm")]
+scale = Vector2(4.5, 4.5)
+interact_label = "[Z]"
+interact_type = "unicorn_activate"
+
+[node name="hidenseek" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="hidenseek" to="." method="_on_hidenseek_timeout"]

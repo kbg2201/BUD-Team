@@ -13,7 +13,7 @@ config_version=5
 config/name="Bloody Unicorn"
 run/main_scene="res://Scenes/headphones_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://art/Lucy_v1.png"
 
 [debug]
 
