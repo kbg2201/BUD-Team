@@ -19,9 +19,12 @@ var thingsLucySays = [
 	"Come here.",
 	"Neigh.",
 	"Can you hear me?",
-	"Can you hear me?",
+	"If you can hear me, follow my voice.",
+	"If you can hear me, follow my voice.",
+	"If you can hear me, follow my voice.",
 	"I'm a unicorn.",
 	"Over here.",
+	"I need help.",
 	"I need help.",
 	"I can hear you."
 ]
@@ -31,11 +34,12 @@ var thingsLucySaysWhenSheIsAboutToKillYou = [
 	"Sucker.",
 	"Neigh.",
 	"I see you now.",
-	"Come back here."
+	"Come back here.",
+	"NGHEUGHAHHHHHHAAAAAHHH"
 ]
 
 var target_dialogue = thingsLucySays
-var talk_speed : int = 3 #make sure this stays an int 
+var talk_speed : int = 6 #make sure this stays an int 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,15 +57,17 @@ func start_talking():
 		scrape_stop.emit()
 		sentinel += 1
 		await get_tree().create_timer(float((randi()%talk_speed)+1)).timeout
-		speak(target_dialogue)
+		var linelen = speak(target_dialogue)
 		scrape_play.emit()
-		await get_tree().create_timer(float((randi()%talk_speed)+1)).timeout
+		#hide dialogue time based on length of line of dialogue
+		await get_tree().create_timer(float(linelen)).timeout
 		$LucyVoice/BlackBcgdMap.visible = false
 		$LucyVoice.text = ""
 		print(sentinel)
 
 #pass an array of strings to this function
-func speak(msg):
+#return length of line of dialogue
+func speak(msg) -> int:
 	if can_talk == true:
 		$LucyVoice/BlackBcgdMap.visible = true
 		#change position of text within the window
@@ -74,8 +80,10 @@ func speak(msg):
 		#output random string from array
 		var text = msg[randi() % msg.size()]
 		$LucyVoice.text = text
-		#voice.speak(audiostream,text)
-
+		#actual text length in seconds is too long, quarter it
+		return text.length() / 4
+	else:
+		return 0
 #should change Lucy's dialogue when she begins to move
 func _on_enemy_unicorn_lucy_kill() -> void:
 	target_dialogue = thingsLucySaysWhenSheIsAboutToKillYou
