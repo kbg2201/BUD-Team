@@ -27,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Panel/AnimationRect:modulate")
+tracks/0/path = NodePath("AnimationRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +55,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Panel/AnimationRect:modulate")
+tracks/0/path = NodePath("AnimationRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -122,6 +122,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Panel"]
+visible = false
 position = Vector2(0, -70)
 scale = Vector2(0.504687, 0.550926)
 texture = ExtResource("2_kcqqj")
@@ -134,15 +135,6 @@ offset_top = -511.0
 offset_right = 729.0
 offset_bottom = 461.0
 size_flags_horizontal = 4
-texture = ExtResource("3_bgcp2")
-
-[node name="AnimationRect" type="TextureRect" parent="VBoxContainer/Panel"]
-layout_mode = 1
-offset_left = -847.0
-offset_top = -556.0
-offset_right = 867.0
-offset_bottom = 1944.0
-scale = Vector2(1, 0.44)
 texture = ExtResource("3_bgcp2")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -208,6 +200,20 @@ offset_bottom = 0.0878906
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -73)
+scale = Vector2(0.511458, 0.611111)
+texture = ExtResource("2_kcqqj")
+
+[node name="AnimationRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -847.0
+offset_top = -556.0
+offset_right = 867.0
+offset_bottom = 1944.0
+scale = Vector2(1, 0.44)
+texture = ExtResource("3_bgcp2")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

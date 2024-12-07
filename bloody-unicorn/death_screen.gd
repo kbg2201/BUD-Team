@@ -3,7 +3,6 @@ extends CanvasLayer
 var fade_duration = 1
 
 func show_message():
-	$CanvasLayer.show()
 	$Text_Timer.start()
 	$Message.show()
 	$AnimationPlayer.play("fade_in")
@@ -17,7 +16,6 @@ func show_transition():
 func _ready() -> void:
 	$Message.hide()
 	$Transition.hide()
-	$CanvasLayer.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,7 +25,6 @@ func _process(delta: float) -> void:
 func _on_transition_timer_timeout() -> void:
 	$Message.hide()
 	$Transition.hide()
-	$CanvasLayer.hide()
 	get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 
 func _on_text_timer_timeout() -> void:
