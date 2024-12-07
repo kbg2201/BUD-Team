@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal lucyKill
+
 var speed = 100
 #i made her get faster until she reaches you
 var pursuit_speed = 1
@@ -14,6 +16,7 @@ var can_move = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimatedSprite2D.play("idle") #lying down at first
 	nav_agent.target_position = player.global_position
 
 
@@ -30,7 +33,7 @@ func _process(delta: float) -> void:
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+		$AnimatedSprite2D.play("default") #running animation
 	else:
 		$AnimatedSprite2D.pause()
 
@@ -39,6 +42,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hidenseek_timeout() -> void:
+	lucyKill.emit()
 	can_move = true
 
 func start_timer():

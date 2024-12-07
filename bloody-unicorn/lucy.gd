@@ -34,6 +34,9 @@ var thingsLucySaysWhenSheIsAboutToKillYou = [
 	"Come back here."
 ]
 
+var target_dialogue = thingsLucySays
+var talk_speed : int = 3 #make sure this stays an int 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#start_talking()
@@ -49,10 +52,10 @@ func start_talking():
 	while(true and sentinel<1000):
 		scrape_stop.emit()
 		sentinel += 1
-		await get_tree().create_timer(float((randi()%3)+1)).timeout
-		speak(thingsLucySaysWhenSheIsAboutToKillYou) #changed for effect
+		await get_tree().create_timer(float((randi()%talk_speed)+1)).timeout
+		speak(target_dialogue)
 		scrape_play.emit()
-		await get_tree().create_timer(float((randi()%3)+1)).timeout
+		await get_tree().create_timer(float((randi()%talk_speed)+1)).timeout
 		$LucyVoice/BlackBcgdMap.visible = false
 		$LucyVoice.text = ""
 		print(sentinel)
@@ -72,3 +75,8 @@ func speak(msg):
 		var text = msg[randi() % msg.size()]
 		$LucyVoice.text = text
 		#voice.speak(audiostream,text)
+
+#should change Lucy's dialogue when she begins to move
+func _on_enemy_unicorn_lucy_kill() -> void:
+	target_dialogue = thingsLucySaysWhenSheIsAboutToKillYou
+	talk_speed = 2
