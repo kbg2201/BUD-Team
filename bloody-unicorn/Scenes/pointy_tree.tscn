@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf2na05c002dm"]
+
+[ext_resource type="Texture2D" uid="uid://cigiejsxpnsdn" path="res://assets/img/pixel art tree triangular-1.png.png" id="1_s86qf"]
+
+[node name="PointyTree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_s86qf")

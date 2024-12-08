@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh0hx6nif7vfn"]
+
+[ext_resource type="Texture2D" uid="uid://bojyiu1bmy1sf" path="res://assets/img/pixel art tree standard-1.png.png" id="1_wtoy7"]
+
+[node name="FluffyTree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wtoy7")
