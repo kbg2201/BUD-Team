@@ -5,6 +5,7 @@ func _ready():
 
 func set_label(str : String):
 	$Label.text = str
+	$AnimatedSprite2D.play("standing")
 
 func start_timer():
 	$Timer.start()

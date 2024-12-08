@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=19 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="AudioStream" uid="uid://7olkjf6tbvhq" path="res://audio/Grass.mp3" id="3_n2jv4"]
@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://clx607a52rmqd" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_r8gia"]
+[ext_resource type="PackedScene" uid="uid://bh0hx6nif7vfn" path="res://Scenes/fluffy_tree.tscn" id="9_a0hix"]
 [ext_resource type="PackedScene" uid="uid://b2t6p61sv7j5r" path="res://Scenes/death_screen.tscn" id="9_jlu5d"]
 [ext_resource type="PackedScene" uid="uid://durgkfblkydn0" path="res://Scenes/map.tscn" id="10_red1e"]
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="11_jau13"]
 [ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://Scenes/pause_menu.tscn" id="12_24puq"]
 [ext_resource type="PackedScene" uid="uid://dy530kled6bw" path="res://Scenes/rock.tscn" id="13_q88vx"]
 [ext_resource type="PackedScene" uid="uid://dxgk2g5dht28w" path="res://Scenes/friendly_unicorn.tscn" id="14_jgyu1"]
+[ext_resource type="PackedScene" uid="uid://bf2na05c002dm" path="res://Scenes/pointy_tree.tscn" id="15_myyla"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l6hfg"]
 vertices = PackedVector2Array(671.078, 47.8672, 884.023, 233.797, 679.844, 202.273, 477.891, 18.0078, -25.0938, -475.758, -23, -717.531, -42.7813, -889, 723.094, -889, 730.953, -23.1016, 686.797, 8.57813, 1033.95, 222.758, 1031.96, 736.727, 1584.06, 1497.25, 1590.93, 2551.85, -17.6797, 2529.14, 862.398, 1515.27, 2456.16, 1122.92, 1825.26, 1118.07, 1836.13, 695.211, 2472.83, 106.891, 1832.75, 100.102, 1823.76, 464, 1743.36, 622.938, 1790, 495, -107.82, 583.852, -125.82, 1595.73, -793.82, 1578.25, -766.172, 14, -647.563, 14, -1159.08, -377.297, -1650.42, 9.96094, -1870.84, 8.07813, -1858.14, -828.344, -1589.75, -837.859, -1191.23, -471.313, -1027.16, -458.18, -1019.03, -365.273, 1610.96, 625.172, 1612.96, 1079, 1164, 1079, 1164, 865, 1163.87, 740.273, 1170.87, 193, 1622, 193, 1622, 528.094, 1790, 464, -48, 16.0313, -48, 1.21094, -39.7891, -387, -498.594, -12.2422, -103, -2.24219, -103, 426.047, 13.7031, 1502.02, 702.117, 1503.99, 769.297, 1516, 352.547, 423.961, 362.531, 210.148, 674.75, 215.109, 1027.27, 865, 1753.4, 526.922, 1755.39, 495, -614, -23.1484, -172.477, -479.219, -172.406, -387, 866, 1451.77, 763.883, 1298.23, 869.102, 1301.82, 1018.13, 1193.79, 381.297, 591.148, -164.633, -328.18, -388.391, -143.156, -504.461, -148.492, 370.141, 968.438, -614, -136.328, -869.43, -789.992, -393.102, -789, -177.781, -576.602, -836.031, -129.117, -1011.48, -301.656, -1024.06, -663.211)
@@ -26,15 +28,25 @@ shader_parameter/crt_brightness = 1.0
 shader_parameter/crt_ghost = 3.0
 shader_parameter/crt_grid = 0.4
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_tay2g")
 
-[node name="Rock" parent="." instance=ExtResource("13_q88vx")]
-position = Vector2(962, 581)
-scale = Vector2(2, 2)
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -3
+offset_left = 6242.0
+offset_top = -3911.0
+offset_right = 7906.0
+offset_bottom = -214.0
+scale = Vector2(-6.10996, 2.15471)
+texture = ExtResource("11_jau13")
+
+[node name="TileMap" parent="." instance=ExtResource("10_red1e")]
+position = Vector2(548, 225)
 
 [node name="Player" parent="." instance=ExtResource("3_re6eu")]
 position = Vector2(683, 430)
+scale = Vector2(0.8, 0.8)
 
 [node name="Grass" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("3_n2jv4")
@@ -49,11 +61,27 @@ position_smoothing_speed = 3.0
 rotation_smoothing_speed = 10.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Player"]
-current = true
 
 [node name="DeathNoise" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("4_37tpt")
 volume_db = -13.56
+
+[node name="Rock" parent="." instance=ExtResource("13_q88vx")]
+position = Vector2(962, 581)
+scale = Vector2(2, 2)
+
+[node name="Trees" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(6.10352e-05, 1.52588e-05)
+scale = Vector2(1, 1)
+
+[node name="PointyTree" parent="Trees" instance=ExtResource("15_myyla")]
+position = Vector2(343, 349)
+scale = Vector2(1.3, 1.3)
+
+[node name="FluffyTree" parent="Trees" instance=ExtResource("9_a0hix")]
+position = Vector2(389, 897)
+scale = Vector2(1.6, 1.6)
 
 [node name="EnemyUnicorn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4eyku")]
 position = Vector2(3300, 660)
@@ -73,18 +101,6 @@ navigation_polygon = SubResource("NavigationPolygon_l6hfg")
 [node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-58, 1, -50, -377, -161, -377, -154, -324, -385, -133, -494, -138, -489, -22, -93, -12, -93, 416, 343, 414, 353, 200, 668, 205, 474, 28, -58, 26)
-
-[node name="TileMap" parent="." instance=ExtResource("10_red1e")]
-position = Vector2(548, 225)
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-z_index = -3
-offset_left = 6242.0
-offset_top = -3911.0
-offset_right = 7906.0
-offset_bottom = -214.0
-scale = Vector2(-6.10996, 2.15471)
-texture = ExtResource("11_jau13")
 
 [node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
 

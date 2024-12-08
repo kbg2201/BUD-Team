@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var is_paused = false
 var can_talk = true

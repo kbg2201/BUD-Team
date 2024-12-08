@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed = 300
 var screen_size
 var can_move
-var recent
+var last_input
 
 @onready var all_interactions = []
 @onready var interact_label = $InteractionComponents/InteractLabel
@@ -15,6 +15,7 @@ signal win
 
 #get the player ready in the window and hide them until the game starts
 func _ready():
+	last_input = "down"
 	screen_size = get_viewport_rect().size 
 	can_move = true
 	#hide()
@@ -37,14 +38,20 @@ func _process(delta):
 	
 	if Input.is_action_pressed("move_up"):
 		$AnimatedSprite2D.play("up")
-		recent = "up"
+		last_input = "up"
 	if Input.is_action_pressed("move_down"):
 		$AnimatedSprite2D.play("down")
-		recent = "down"
+		last_input = "down"
 	if Input.is_action_pressed("move_left"):
-		$AnimatedSprite2D.play(recent)
+		if last_input == "up":
+			$AnimatedSprite2D.play("up")
+		else:
+			$AnimatedSprite2D.play("down")
 	if Input.is_action_pressed("move_right"):
-		$AnimatedSprite2D.play(recent)
+		if last_input == "up":
+			$AnimatedSprite2D.play("up")
+		else:
+			$AnimatedSprite2D.play("down")
 		
 	
 	position += velocity * delta
