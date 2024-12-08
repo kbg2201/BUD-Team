@@ -55,3 +55,8 @@ func _rock_destroy() -> void:
 
 func _unicorn_activate() -> void:
 	$EnemyUnicorn.start_timer()
+
+
+func _on_player_win() -> void:
+	$FriendlyUnicorn.set_label("Thank you for playing video game")
+	$FriendlyUnicorn.start_timer()

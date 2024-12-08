@@ -10,6 +10,7 @@ var can_move
 signal hit
 signal rock_destroy
 signal unicorn_activate
+signal win
 
 #get the player ready in the window and hide them until the game starts
 func _ready():
@@ -95,3 +96,4 @@ func exectute_interactions():
 		match current_interaction.interact_type:
 			"rock_destroy" : rock_destroy.emit()
 			"unicorn_activate" : unicorn_activate.emit()
+			"win" : win.emit()
