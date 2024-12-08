@@ -79,10 +79,10 @@ position = Vector2(548, 225)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 z_index = -3
-offset_left = 4464.0
-offset_top = -1054.0
-offset_right = 5419.0
-offset_bottom = 747.0
+offset_left = 6242.0
+offset_top = -3911.0
+offset_right = 7906.0
+offset_bottom = -214.0
 scale = Vector2(-6.10996, 2.15471)
 texture = ExtResource("11_jau13")
 
@@ -93,6 +93,7 @@ texture = ExtResource("11_jau13")
 [node name="PauseMenu" parent="." instance=ExtResource("12_24puq")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8lw3j")
