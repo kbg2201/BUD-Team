@@ -11,22 +11,19 @@ var can_talk = true
 #crude dialogue
 var thingsLucySays = [
 	"Hello?",
-	"Who's there?",
-	"Who's there?",
-	"Hey.",
-	"Psst.",
 	"Come here.",
-	"Come here.",
+	"Please don't ignore me :( ",
 	"Neigh.",
 	"Can you hear me?",
 	"If you can hear me, follow my voice.",
 	"If you can hear me, follow my voice.",
-	"If you can hear me, follow my voice.",
-	"I'm a unicorn.",
-	"Over here.",
-	"I need help.",
-	"I need help.",
-	"I can hear you."
+	"If you can hear me, follow my voice. Please.",
+	"I'm a unicorn :( ",
+	"*sobbing*",
+	"*sobbing*",
+	"I need help :( ",
+	"I need help :( ",
+	"Who's there? "
 ]
 var thingsLucySaysWhenSheIsAboutToKillYou = [
 	"Hold still.",
@@ -61,7 +58,7 @@ func start_talking():
 		scrape_play.emit()
 		#hide dialogue time based on length of line of dialogue
 		await get_tree().create_timer(float(linelen)).timeout
-		$LucyVoice/BlackBcgdMap.visible = false
+		#$LucyVoice/BlackBcgdMap.visible = false
 		$LucyVoice.text = ""
 		print(sentinel)
 
@@ -69,7 +66,7 @@ func start_talking():
 #return length of line of dialogue
 func speak(msg) -> int:
 	if can_talk == true:
-		$LucyVoice/BlackBcgdMap.visible = true
+		#$LucyVoice/BlackBcgdMap.visible = true
 		#change position of text within the window
 		var windowHalfX = (get_window().get_size_with_decorations().x)/2
 		var windowHalfY = (get_window().get_size_with_decorations().y)/2
