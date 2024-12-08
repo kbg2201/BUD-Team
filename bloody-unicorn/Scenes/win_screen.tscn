@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dajcbwnbvpqq2"]
+[gd_scene load_steps=17 format=3 uid="uid://dajcbwnbvpqq2"]
 
 [ext_resource type="Script" path="res://win_screen.gd" id="1_hu35j"]
 [ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="2_ifs3w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8gfoykjk3vka" path="res://art/Nadia-2.png.png" id="5_o6e8w"]
 [ext_resource type="Texture2D" uid="uid://cdlyqaudniicf" path="res://assets/img/light.png" id="6_lwpqk"]
 [ext_resource type="Texture2D" uid="uid://16tp33ww2o6q" path="res://art/Lucy_v2.png" id="7_as3jo"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_g7fne"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2fww2"]
 animations = [{
@@ -44,6 +45,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_52gnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite/PointLight2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UnicornSprite/PointLight2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_74wg7"]
 resource_name = "new_animation"
 length = 2.0
@@ -59,20 +99,29 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_52gnj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect2:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite/PointLight2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UnicornSprite/PointLight2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gy8rx"]
@@ -80,6 +129,12 @@ _data = {
 "RESET": SubResource("Animation_52gnj"),
 "new_animation": SubResource("Animation_74wg7")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4f1o"]
+shader = ExtResource("8_g7fne")
+shader_parameter/crt_brightness = 1.0
+shader_parameter/crt_ghost = 3.0
+shader_parameter/crt_grid = 0.4
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -145,10 +200,12 @@ sprite_frames = SubResource("SpriteFrames_odj60")
 animation = &"UnicornWalk"
 
 [node name="PointLight2D" type="PointLight2D" parent="UnicornSprite"]
+color = Color(1, 1, 1, 0)
 texture = ExtResource("6_lwpqk")
 texture_scale = 0.2
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1347.0
 offset_bottom = 768.0
 texture = ExtResource("2_ifs3w")
@@ -160,6 +217,23 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_u4f1o")
+anchors_preset = -1
+anchor_left = -1.27
+anchor_top = -1.676
+anchor_right = 3.911
+anchor_bottom = 4.344
+offset_left = 77.6
+offset_top = 58.72
+offset_right = -4.91211
+offset_bottom = 58.7595
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

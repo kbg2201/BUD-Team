@@ -93,7 +93,6 @@ texture = ExtResource("11_jau13")
 [node name="PauseMenu" parent="." instance=ExtResource("12_24puq")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_8lw3j")
