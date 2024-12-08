@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var speed = 300
 var screen_size
@@ -20,30 +20,24 @@ func _ready():
 
 #set up movements
 func _process(delta):
-	var velocity = Vector2.ZERO
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = direction * speed
 	if can_move == true:
-		if Input.is_action_pressed("move_right"):
-			velocity.x += 10
-			$AnimatedSprite2D.animation = "down"
-		if Input.is_action_pressed("move_left"):
-			velocity.x -= 10
-			$AnimatedSprite2D.animation = "down"
-		if Input.is_action_pressed("move_down"):
-			velocity.y += 10
-			$AnimatedSprite2D.animation = "down"
-		if Input.is_action_pressed("move_up"):
-			velocity.y -= 10
-			$AnimatedSprite2D.animation = "up"
+		move_and_slide()
 
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized()
 		if $GrassTimer.time_left <= 0:
 			$Grass.play()
 			$GrassTimer.start(0.25) #i think smaller timer is better
-		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.pause()
 		$Grass.stop()
+	
+	if Input.is_action_pressed("move_up"):
+		$AnimatedSprite2D.play("up")
+	if Input.is_action_pressed("move_down"):
+		$AnimatedSprite2D.play("down")
 		
 	
 	position += velocity * delta
@@ -60,12 +54,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("interact"):
 		exectute_interactions()
-
-func _on_body_entered(body):
-	hide()
-	hit.emit()
-	can_move = false
-	$CollisionShape2D.set_deferred("disabled", true)
 
 #Starts the player
 func start(pos):
@@ -97,3 +85,10 @@ func exectute_interactions():
 			"rock_destroy" : rock_destroy.emit()
 			"unicorn_activate" : unicorn_activate.emit()
 			"win" : win.emit()
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	hide()
+	hit.emit()
+	can_move = false
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
