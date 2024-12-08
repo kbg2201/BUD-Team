@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://due2ymlrp6sru"]
+[gd_scene load_steps=17 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
 [ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dr00rxwtmay7l" path="res://assets/img/bgblack.jpg" id="11_jau13"]
 [ext_resource type="PackedScene" uid="uid://8ebqyf01b32c" path="res://Scenes/pause_menu.tscn" id="12_24puq"]
 [ext_resource type="PackedScene" uid="uid://dy530kled6bw" path="res://Scenes/rock.tscn" id="13_q88vx"]
+[ext_resource type="PackedScene" uid="uid://dxgk2g5dht28w" path="res://Scenes/friendly_unicorn.tscn" id="14_jgyu1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l6hfg"]
 vertices = PackedVector2Array(671.078, 47.8672, 884.023, 233.797, 679.844, 202.273, 477.891, 18.0078, -25.0938, -475.758, -23, -717.531, -42.7813, -889, 723.094, -889, 730.953, -23.1016, 686.797, 8.57813, 1033.95, 222.758, 1031.96, 736.727, 1584.06, 1497.25, 1590.93, 2551.85, -17.6797, 2529.14, 862.398, 1515.27, 2456.16, 1122.92, 1825.26, 1118.07, 1836.13, 695.211, 2472.83, 106.891, 1832.75, 100.102, 1823.76, 464, 1743.36, 622.938, 1790, 495, -107.82, 583.852, -125.82, 1595.73, -793.82, 1578.25, -766.172, 14, -647.563, 14, -1159.08, -377.297, -1650.42, 9.96094, -1870.84, 8.07813, -1858.14, -828.344, -1589.75, -837.859, -1191.23, -471.313, -1027.16, -458.18, -1019.03, -365.273, 1610.96, 625.172, 1612.96, 1079, 1164, 1079, 1164, 865, 1163.87, 740.273, 1170.87, 193, 1622, 193, 1622, 528.094, 1790, 464, -48, 16.0313, -48, 1.21094, -39.7891, -387, -498.594, -12.2422, -103, -2.24219, -103, 426.047, 13.7031, 1502.02, 702.117, 1503.99, 769.297, 1516, 352.547, 423.961, 362.531, 210.148, 674.75, 215.109, 1027.27, 865, 1753.4, 526.922, 1755.39, 495, -614, -23.1484, -172.477, -479.219, -172.406, -387, 866, 1451.77, 763.883, 1298.23, 869.102, 1301.82, 1018.13, 1193.79, 381.297, 591.148, -164.633, -328.18, -388.391, -143.156, -504.461, -148.492, 370.141, 968.438, -614, -136.328, -869.43, -789.992, -393.102, -789, -177.781, -576.602, -836.031, -129.117, -1011.48, -301.656, -1024.06, -663.211)
@@ -62,6 +63,9 @@ player = NodePath("../Player")
 [node name="knifescrape" type="AudioStreamPlayer2D" parent="EnemyUnicorn"]
 stream = ExtResource("5_kxich")
 
+[node name="FriendlyUnicorn" parent="." instance=ExtResource("14_jgyu1")]
+position = Vector2(488, -296)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 position = Vector2(1011, 73)
@@ -71,19 +75,19 @@ navigation_polygon = SubResource("NavigationPolygon_l6hfg")
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-58, 1, -50, -377, -161, -377, -154, -324, -385, -133, -494, -138, -489, -22, -93, -12, -93, 416, 343, 414, 353, 200, 668, 205, 474, 28, -58, 26)
 
-[node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
-
 [node name="TileMap" parent="." instance=ExtResource("10_red1e")]
 position = Vector2(548, 225)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 z_index = -3
 offset_left = 4464.0
-offset_top = -1416.0
+offset_top = -1054.0
 offset_right = 5419.0
-offset_bottom = 385.0
+offset_bottom = 747.0
 scale = Vector2(-6.10996, 2.15471)
 texture = ExtResource("11_jau13")
+
+[node name="Death_Screen" parent="." instance=ExtResource("9_jlu5d")]
 
 [node name="LucyVoice" parent="." instance=ExtResource("3_odk8b")]
 
@@ -109,6 +113,7 @@ mouse_filter = 2
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="rock_destroy" from="Player" to="." method="_rock_destroy"]
 [connection signal="unicorn_activate" from="Player" to="." method="_unicorn_activate"]
+[connection signal="win" from="Player" to="." method="_on_player_win"]
 [connection signal="lucyKill" from="EnemyUnicorn" to="LucyVoice" method="_on_enemy_unicorn_lucy_kill"]
 [connection signal="scrape_play" from="LucyVoice" to="." method="_on_lucy_voice_scrape_play"]
 [connection signal="scrape_stop" from="LucyVoice" to="." method="_on_lucy_voice_scrape_stop"]

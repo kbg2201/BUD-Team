@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxgk2g5dht28w"]
+
+[ext_resource type="Script" path="res://friendly_unicorn.gd" id="1_js5tl"]
+[ext_resource type="PackedScene" uid="uid://b080xdjmc2aeb" path="res://Scenes/interact_area.tscn" id="1_xaeug"]
+[ext_resource type="Texture2D" uid="uid://cunmww8v2eehx" path="res://art/sucy_idle.png" id="2_ybrrv"]
+[ext_resource type="Texture2D" uid="uid://b73rwm1lnp8ny" path="res://art/Sucy.png" id="3_2yqd6"]
+[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="5_udh5y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hlh58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ybrrv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2yqd6")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86rhh"]
+size = Vector2(17, 17.5)
+
+[node name="FriendlyUnicorn" type="CharacterBody2D"]
+script = ExtResource("1_js5tl")
+
+[node name="InteractArea" parent="." instance=ExtResource("1_xaeug")]
+scale = Vector2(2.7, 2.7)
+interact_label = "[Z] SPEAK"
+interact_type = "win"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hlh58")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2.25)
+shape = SubResource("RectangleShape2D_86rhh")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -91.5
+offset_right = 31.0
+offset_bottom = -68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_udh5y")
+theme_override_font_sizes/font_size = 14
+text = "Test"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
