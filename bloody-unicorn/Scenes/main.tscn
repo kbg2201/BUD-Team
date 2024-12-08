@@ -64,7 +64,7 @@ player = NodePath("../Player")
 stream = ExtResource("5_kxich")
 
 [node name="FriendlyUnicorn" parent="." instance=ExtResource("14_jgyu1")]
-position = Vector2(488, -296)
+position = Vector2(1100, 1700)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
