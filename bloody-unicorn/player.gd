@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed = 300
 var screen_size
 var can_move
+var recent
 
 @onready var all_interactions = []
 @onready var interact_label = $InteractionComponents/InteractLabel
@@ -36,8 +37,14 @@ func _process(delta):
 	
 	if Input.is_action_pressed("move_up"):
 		$AnimatedSprite2D.play("up")
+		recent = "up"
 	if Input.is_action_pressed("move_down"):
 		$AnimatedSprite2D.play("down")
+		recent = "down"
+	if Input.is_action_pressed("move_left"):
+		$AnimatedSprite2D.play(recent)
+	if Input.is_action_pressed("move_right"):
+		$AnimatedSprite2D.play(recent)
 		
 	
 	position += velocity * delta
