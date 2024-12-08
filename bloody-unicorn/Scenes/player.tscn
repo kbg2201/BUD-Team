@@ -1,21 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://de1o8styvx21d"]
+[gd_scene load_steps=12 format=3 uid="uid://cjb0nikx66rfn"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_ac0y6"]
-[ext_resource type="Texture2D" uid="uid://dojuybb8b3b5p" path="res://art/Nadia-1.png.png" id="2_pg4jl"]
-[ext_resource type="Texture2D" uid="uid://b8gfoykjk3vka" path="res://art/Nadia-2.png.png" id="3_qdudq"]
-[ext_resource type="Texture2D" uid="uid://b22u8ntca0ed7" path="res://art/Nadia-3.png.png" id="4_6nie5"]
-[ext_resource type="Texture2D" uid="uid://be5axq4jv26pl" path="res://art/Nadia-4.png.png" id="5_28u4i"]
-[ext_resource type="Texture2D" uid="uid://cdlyqaudniicf" path="res://assets/img/light.png" id="6_50xna"]
-[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="7_wkti7"]
+[ext_resource type="Texture2D" uid="uid://dojuybb8b3b5p" path="res://art/Nadia-1.png.png" id="1_im454"]
+[ext_resource type="Script" path="res://player.gd" id="1_vo0if"]
+[ext_resource type="Texture2D" uid="uid://b8gfoykjk3vka" path="res://art/Nadia-2.png.png" id="2_7obld"]
+[ext_resource type="Texture2D" uid="uid://b22u8ntca0ed7" path="res://art/Nadia-3.png.png" id="3_o2ko3"]
+[ext_resource type="Texture2D" uid="uid://be5axq4jv26pl" path="res://art/Nadia-4.png.png" id="4_vosfs"]
+[ext_resource type="Texture2D" uid="uid://cdlyqaudniicf" path="res://assets/img/light.png" id="5_pb1k2"]
+[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="6_elgsk"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_smjhp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_d651w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pg4jl")
+"texture": ExtResource("1_im454")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qdudq")
+"texture": ExtResource("2_7obld")
 }],
 "loop": true,
 "name": &"down",
@@ -23,51 +23,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_6nie5")
+"texture": ExtResource("3_o2ko3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_28u4i")
+"texture": ExtResource("4_vosfs")
 }],
 "loop": true,
 "name": &"up",
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7jkj"]
-size = Vector2(66, 133)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fo2cr"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggure"]
 radius = 101.833
 
-[node name="Player" type="Area2D"]
-position = Vector2(603, 328)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("1_ac0y6")
-metadata/_edit_group_ = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn5lg"]
+size = Vector2(66, 133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmrdf"]
+size = Vector2(35, 36)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_vo0if")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_smjhp")
+sprite_frames = SubResource("SpriteFrames_d651w")
 animation = &"down"
-frame_progress = 0.382524
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 7.5)
-shape = SubResource("RectangleShape2D_f7jkj")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-offset_left = -46.0
-offset_top = -57.0
-offset_right = 45.0
-offset_bottom = 56.0
-color = Color(1, 1, 1, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 2.0
 shadow_enabled = true
-texture = ExtResource("6_50xna")
+texture = ExtResource("5_pb1k2")
 texture_scale = 4.0
 
 [node name="InteractionComponents" type="Node2D" parent="."]
@@ -79,7 +66,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponents/InteractionArea"]
-shape = SubResource("CircleShape2D_fo2cr")
+shape = SubResource("CircleShape2D_ggure")
 
 [node name="InteractLabel" type="Label" parent="InteractionComponents"]
 anchors_preset = 8
@@ -93,10 +80,30 @@ offset_right = 20.0
 offset_bottom = -100.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_wkti7")
+theme_override_fonts/font = ExtResource("6_elgsk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3, 7.5)
+shape = SubResource("RectangleShape2D_jn5lg")
+
+[node name="ColorRect" type="ColorRect" parent="Hitbox/CollisionShape2D"]
+z_index = -1
+offset_left = -46.0
+offset_top = -57.0
+offset_right = 45.0
+offset_bottom = 56.0
+color = Color(1, 1, 1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 57)
+shape = SubResource("RectangleShape2D_dmrdf")
+
 [connection signal="area_entered" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionComponents/InteractionArea" to="." method="_on_interaction_area_area_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://due2ymlrp6sru"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_tay2g"]
-[ext_resource type="PackedScene" uid="uid://de1o8styvx21d" path="res://Scenes/player.tscn" id="2_owd1m"]
 [ext_resource type="AudioStream" uid="uid://7olkjf6tbvhq" path="res://audio/Grass.mp3" id="3_n2jv4"]
 [ext_resource type="PackedScene" uid="uid://bflqk4x6jx4mo" path="res://Scenes/lucyvoice.tscn" id="3_odk8b"]
+[ext_resource type="PackedScene" uid="uid://cjb0nikx66rfn" path="res://Scenes/player.tscn" id="3_re6eu"]
 [ext_resource type="AudioStream" uid="uid://dhco8vmm8aha4" path="res://audio/Player-Death.wav" id="4_37tpt"]
 [ext_resource type="PackedScene" uid="uid://clx607a52rmqd" path="res://Scenes/enemy_unicorn.tscn" id="5_4eyku"]
 [ext_resource type="AudioStream" uid="uid://bo22nbjgrcv4r" path="res://audio/Sounds.mp3" id="5_kxich"]
@@ -33,9 +33,8 @@ script = ExtResource("1_tay2g")
 position = Vector2(962, 581)
 scale = Vector2(2, 2)
 
-[node name="Player" parent="." instance=ExtResource("2_owd1m")]
-position = Vector2(554, 378)
-scale = Vector2(0.7, 0.7)
+[node name="Player" parent="." instance=ExtResource("3_re6eu")]
+position = Vector2(683, 430)
 
 [node name="Grass" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("3_n2jv4")
@@ -109,6 +108,39 @@ offset_bottom = 58.7595
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Walls" type="Node2D" parent="."]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
+polygon = PackedVector2Array(518, 63, 519, -57, 628, -61, 849, -251, 854, -305, 959, -306, 956, 86, 1507, 96, 1692, 279, 1361, 279, 1360, 492, 915, 492, 923, 67)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D2"]
+polygon = PackedVector2Array(195, 1680, 215, 2624, 973, 2630, 982, 1537, 1746, 1534, 1743, 1393, 1355, 1073, 1356, 686, 921, 681, 901, 1681)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D3"]
+polygon = PackedVector2Array(220, 56, 368, 59, 364, -30, 167, -28, -21, -185, -34, -192, -31, -277, -144, -280, -595, 108, -887, 110, -906, 1916, 194, 1944)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D4"]
+polygon = PackedVector2Array(899, 2783, 902, 2639, 2619, 2645, 2638, 1545, 1896, 1540, 1899, 1387, 2040, 1281, 2051, 957, 2164, 956, 2159, 1159, 2640, 1171, 2647, 718, 2743, 717, 2830, 776, 2823, 1199, 3483, 1204, 3497, 197, 3599, 206, 3578, 2803)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D5"]
+polygon = PackedVector2Array(3596, 210, 3598, -943, 1779, -847, 1775, 84, 1731, 95, 1916, 280, 2068, 284, 2052, 799, 2167, 802, 2172, 256, 2645, 253, 2648, 589, 2756, 589, 2825, 530, 2836, 168, 3493, 167, 3493, 194)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D6"]
+polygon = PackedVector2Array(-1175, 302, -894, 296, -870, -771, -559, -779, -540, -779, -139, -403, -32, -401, -28, -614, 3, -612, 135, -733, 633, -732, 845, -547, 849, -433, 967, -432, 969, -852, 1830, -851, 1829, -1208, -1205, -1088)
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="rock_destroy" from="Player" to="." method="_rock_destroy"]
