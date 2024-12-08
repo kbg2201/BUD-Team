@@ -1,0 +1,165 @@
+[gd_scene load_steps=15 format=3 uid="uid://dajcbwnbvpqq2"]
+
+[ext_resource type="Script" path="res://win_screen.gd" id="1_hu35j"]
+[ext_resource type="Texture2D" uid="uid://5s3t0l8qtsw4" path="res://assets/img/bgblue.png" id="2_ifs3w"]
+[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="3_altxj"]
+[ext_resource type="Texture2D" uid="uid://dojuybb8b3b5p" path="res://art/Nadia-1.png.png" id="4_o15fw"]
+[ext_resource type="Texture2D" uid="uid://b8gfoykjk3vka" path="res://art/Nadia-2.png.png" id="5_o6e8w"]
+[ext_resource type="Texture2D" uid="uid://cdlyqaudniicf" path="res://assets/img/light.png" id="6_lwpqk"]
+[ext_resource type="Texture2D" uid="uid://16tp33ww2o6q" path="res://art/Lucy_v2.png" id="7_as3jo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fww2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o15fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o6e8w")
+}],
+"loop": true,
+"name": &"player_walk",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovbvo"]
+atlas = ExtResource("7_as3jo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmwp0"]
+atlas = ExtResource("7_as3jo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odj60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovbvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmwp0")
+}],
+"loop": true,
+"name": &"UnicornWalk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_74wg7"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_52gnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gy8rx"]
+_data = {
+"RESET": SubResource("Animation_52gnj"),
+"new_animation": SubResource("Animation_74wg7")
+}
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hu35j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1347.0
+offset_bottom = 768.0
+texture = ExtResource("2_ifs3w")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -353.5
+offset_top = -16.5
+offset_right = 353.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_altxj")
+theme_override_font_sizes/font_size = 33
+text = "THANK YOU FOR PLAYING!
+
+
+DEVELOPERS:
+
+
+KARINA GONZALES
+
+AVERY JOHNSON
+
+DAVID KUNTZ
+
+RYAN WEEMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(287, 593)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_2fww2")
+animation = &"player_walk"
+
+[node name="PointLight2D" type="PointLight2D" parent="PlayerSprite"]
+texture = ExtResource("6_lwpqk")
+texture_scale = 0.2
+
+[node name="UnicornSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(994, 593)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_odj60")
+animation = &"UnicornWalk"
+
+[node name="PointLight2D" type="PointLight2D" parent="UnicornSprite"]
+texture = ExtResource("6_lwpqk")
+texture_scale = 0.2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1347.0
+offset_bottom = 768.0
+texture = ExtResource("2_ifs3w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gy8rx")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
