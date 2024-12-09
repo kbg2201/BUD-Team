@@ -23,7 +23,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if can_move == true:
-		pursuit_speed += 0.3
+		pursuit_speed += 0.2
 		var next_path_pos := nav_agent.get_next_path_position()
 		#the missile knows where it is at all times
 		#it knows this because it knows where it isn't

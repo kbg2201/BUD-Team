@@ -7,7 +7,7 @@ var can_talk = true
 func _ready() -> void:
 	$Death_Screen.hide()
 	$LucyVoice.start_talking()
-	pass # Replace with function body.
+	$SucyVoice.start_talking()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +35,7 @@ func _on_player_hit() -> void:
 
 func _on_lucy_voice_scrape_play() -> void:
 	if can_talk:
-		$EnemyUnicorn/knifescrape.play() # Replace with function body.
+		$EnemyUnicorn/knifescrape.play()
 
 
 func _on_lucy_voice_scrape_stop() -> void:
@@ -60,3 +60,12 @@ func _unicorn_activate() -> void:
 func _on_player_win() -> void:
 	$FriendlyUnicorn.set_label("Thank you for playing video game")
 	$FriendlyUnicorn.start_timer()
+
+
+func _on_sucy_voice_scrape_play() -> void:
+	if can_talk:
+		$FriendlyUnicorn/knifescrape.play()
+
+
+func _on_sucy_voice_scrape_stop() -> void:
+		$FriendlyUnicorn/knifescrape.stop()

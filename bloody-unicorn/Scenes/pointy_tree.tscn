@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf2na05c002dm"]
+[gd_scene load_steps=3 format=3 uid="uid://bf2na05c002dm"]
 
 [ext_resource type="Texture2D" uid="uid://cigiejsxpnsdn" path="res://assets/img/pixel art tree triangular-1.png.png" id="1_s86qf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx6ks"]
+size = Vector2(8, 24)
 
 [node name="PointyTree" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_s86qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 60)
+shape = SubResource("RectangleShape2D_mx6ks")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dltke5vkac63b"]
+
+[ext_resource type="Script" path="res://sucy_voice.gd" id="1_0enry"]
+[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="2_vwb1a"]
+
+[node name="SucyVoice" type="CanvasLayer"]
+script = ExtResource("1_0enry")
+
+[node name="SucyVoice" type="Label" parent="."]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_vwb1a")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
