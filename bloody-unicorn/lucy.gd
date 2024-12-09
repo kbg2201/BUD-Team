@@ -84,4 +84,4 @@ func speak(msg) -> int:
 #should change Lucy's dialogue when she begins to move
 func _on_enemy_unicorn_lucy_kill() -> void:
 	target_dialogue = thingsLucySaysWhenSheIsAboutToKillYou
-	talk_speed = 2
+	talk_speed = 1

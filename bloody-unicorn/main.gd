@@ -67,6 +67,9 @@ func _rock_destroy() -> void:
 
 func _unicorn_activate() -> void:
 	$EnemyUnicorn.start_timer()
+	#not sure if this does what I want
+	$LucyVoice.start_talking()
+	$SucyVoice.start_talking()
 
 
 func _on_player_win() -> void:
