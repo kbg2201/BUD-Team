@@ -15,23 +15,22 @@ var thingsLucySays = [
 	"Please don't ignore me",
 	"Neigh.",
 	"Can you hear me?",
-	"If you can hear me, follow my voice.",
+	"Please believe me :(",
 	"If you can hear me, follow my voice.",
 	"If you can hear me, follow my voice. Please.",
 	"I'm a unicorn :( ",
+	"They're being so mean to me aren't they",
 	"*sobbing*",
-	"*sobbing*",
-	"I need help :( ",
+	"Listen to me, please. ",
 	"I need help :( ",
 	"Who's there? "
 ]
 var thingsLucySaysWhenSheIsAboutToKillYou = [
-	"Hold still.",
+	"Hold still!",
 	"Here I am.",
-	"Sucker.",
-	"Neigh.",
+	"Sucker!",
 	"I see you now.",
-	"Come back here.",
+	"Come back here!",
 	"NGHEUGHAHHHHHHAAAAAHHH"
 ]
 
@@ -67,9 +66,9 @@ func start_talking():
 func speak(msg) -> int:
 	if can_talk == true:
 		#$LucyVoice/BlackBcgdMap.visible = true
-		#change position of text within the window
-		var windowHalfX = (get_window().get_size_with_decorations().x)/2
-		var windowHalfY = (get_window().get_size_with_decorations().y)/2
+		#change position of text within RIGHT SIDE of the window
+		var windowHalfX : int = int((get_window().get_size_with_decorations().x)*0.75)
+		var windowHalfY : int = int((get_window().get_size_with_decorations().y)/2)
 		$LucyVoice.position = Vector2(
 			randi()%(windowHalfX-101)+100,
 			randi()%(windowHalfY-101)+100

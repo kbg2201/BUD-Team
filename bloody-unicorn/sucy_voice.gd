@@ -61,9 +61,9 @@ func start_talking():
 func speak(msg) -> int:
 	if can_talk == true:
 		#$SucyVoice/BlackBcgdMap.visible = true
-		#change position of text within the window
-		var windowHalfX = (get_window().get_size_with_decorations().x)/2
-		var windowHalfY = (get_window().get_size_with_decorations().y)/2
+		#change position of text within LEFT SIDE of the window
+		var windowHalfX : int = int((get_window().get_size_with_decorations().x)*0.25)
+		var windowHalfY : int = int((get_window().get_size_with_decorations().y)/2)
 		$SucyVoice.position = Vector2(
 			randi()%(windowHalfX-101)+100,
 			randi()%(windowHalfY-101)+100

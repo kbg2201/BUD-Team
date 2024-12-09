@@ -58,6 +58,8 @@ func _unicorn_activate() -> void:
 
 
 func _on_player_win() -> void:
+	$FriendlyUnicorn/knifescrape.stop()
+	$SucyVoice/SucyVoice.hide()
 	$FriendlyUnicorn.set_label("Oh good! You found me.")
 	$FriendlyUnicorn.start_timer()
 
