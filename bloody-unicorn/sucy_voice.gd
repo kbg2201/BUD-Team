@@ -13,7 +13,7 @@ var thingsSucySays = [
 	"Don't listen to the other voice you idiot!",
 	"Hey! Hey! Hey! Hello? Hey! Hey!",
 	"I need more help than they do!!!",
-	"You are being so problematic right now. I can't believe this.",
+	"You are being so difficult right now. I can't believe this.",
 	"Follow my voice!!! What are you doing aaaa",
 	"I'm actually am a unicorn, unlike that freak trying to kill you.",
 	"Come over here. Not over there. Over here. Now.",
@@ -30,7 +30,7 @@ var thingsSucySaysWhenYouAreAboutToDie = [
 ]
 
 var target_dialogue = thingsSucySays
-var talk_speed : int = 5 #make sure this stays an int 
+var talk_speed : int = 7 #make sure this stays an int 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

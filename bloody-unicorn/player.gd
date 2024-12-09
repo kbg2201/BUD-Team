@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 300
+@export var speed = 200
 var screen_size
 var can_move
 var last_input

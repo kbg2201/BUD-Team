@@ -58,7 +58,7 @@ func _unicorn_activate() -> void:
 
 
 func _on_player_win() -> void:
-	$FriendlyUnicorn.set_label("Thank you for playing video game")
+	$FriendlyUnicorn.set_label("Oh good! You found me.")
 	$FriendlyUnicorn.start_timer()
 
 

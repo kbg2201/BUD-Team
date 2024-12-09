@@ -63,7 +63,6 @@ interact_label = "[Z]"
 interact_type = "unicorn_activate"
 
 [node name="hidenseek" type="Timer" parent="."]
-wait_time = 5.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="hidenseek" to="." method="_on_hidenseek_timeout"]
