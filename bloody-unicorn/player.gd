@@ -12,6 +12,7 @@ signal hit
 signal rock_destroy
 signal unicorn_activate
 signal win
+signal wall
 
 #get the player ready in the window and hide them until the game starts
 func _ready():
@@ -99,6 +100,7 @@ func exectute_interactions():
 			"rock_destroy" : rock_destroy.emit()
 			"unicorn_activate" : unicorn_activate.emit()
 			"win" : win.emit()
+			"wall" : wall.emit()
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

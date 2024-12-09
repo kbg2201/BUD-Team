@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt1yu4mvvfwuj"]
+
+[ext_resource type="Texture2D" uid="uid://bp8p35w4mibep" path="res://art/Key.png" id="1_ee7cg"]
+
+[node name="KeyHUD" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(109, 90)
+scale = Vector2(7, 7)
+texture = ExtResource("1_ee7cg")

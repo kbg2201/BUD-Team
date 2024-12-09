@@ -2,10 +2,14 @@ extends Node2D
 
 var is_paused = false
 var can_talk = true
+var key_screen = false
+var has_key = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$KeyHUD.hide()
 	$Death_Screen.hide()
+	$KeyScreen.hide()
 	$LucyVoice.start_talking()
 	$SucyVoice.start_talking()
 
@@ -21,6 +25,12 @@ func _process(delta: float) -> void:
 			is_paused = true
 		elif is_paused:
 			$PauseMenu.resume()
+	
+	if key_screen == true and Input.is_action_just_pressed("ui_accept"):
+		$KeyScreen.hide()
+		$KeyHUD.show()
+		has_key = true
+		$Wall.set_label("")
 	pass
 
 
@@ -51,6 +61,8 @@ func _on_pause_menu_resumed() -> void:
 
 func _rock_destroy() -> void:
 	$Rock.queue_free()
+	$KeyScreen.show()
+	key_screen = true
 
 
 func _unicorn_activate() -> void:
@@ -71,3 +83,9 @@ func _on_sucy_voice_scrape_play() -> void:
 
 func _on_sucy_voice_scrape_stop() -> void:
 		$FriendlyUnicorn/knifescrape.stop()
+
+
+func _wall() -> void:
+	if has_key == true:
+		$Wall.queue_free()
+		$KeyHUD.hide()

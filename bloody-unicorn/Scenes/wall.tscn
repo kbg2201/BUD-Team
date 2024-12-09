@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0qc8engm2lvb"]
+
+[ext_resource type="Texture2D" uid="uid://tm7r7r7s481y" path="res://art/wall.png" id="1_1fmqa"]
+[ext_resource type="Script" path="res://Scenes/wall.gd" id="1_a5uin"]
+[ext_resource type="PackedScene" uid="uid://b080xdjmc2aeb" path="res://Scenes/interact_area.tscn" id="2_nn7ee"]
+[ext_resource type="FontFile" uid="uid://d34r571kljcgx" path="res://assets/fonts/AGoblinAppears-o2aV.ttf" id="3_crx4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0doev"]
+size = Vector2(456, 158)
+
+[node name="Wall" type="StaticBody2D"]
+script = ExtResource("1_a5uin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(146, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("1_1fmqa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("1_1fmqa")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(289, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("1_1fmqa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(145, 0)
+shape = SubResource("RectangleShape2D_0doev")
+
+[node name="InteractArea" parent="." instance=ExtResource("2_nn7ee")]
+position = Vector2(145, 0)
+scale = Vector2(8, 8)
+collision_mask = 1
+monitoring = true
+interact_label = "KEY REQUIRED"
+interact_type = "wall"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -271.0
+offset_top = -139.0
+offset_right = 561.0
+offset_bottom = -111.0
+theme_override_fonts/font = ExtResource("3_crx4w")
+theme_override_font_sizes/font_size = 28
+text = "YOU NEED A KEY TO GET PAST HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]
