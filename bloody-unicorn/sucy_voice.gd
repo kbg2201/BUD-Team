@@ -30,7 +30,7 @@ var thingsSucySaysWhenYouAreAboutToDie = [
 ]
 
 var target_dialogue = thingsSucySays
-var talk_speed : int = 7 #make sure this stays an int 
+var talk_speed : int = 8 #make sure this stays an int 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,4 +79,4 @@ func speak(msg) -> int:
 #should change Sucy's dialogue when she begins to move
 func _on_enemy_unicorn_lucy_kill() -> void:
 	target_dialogue = thingsSucySaysWhenYouAreAboutToDie
-	talk_speed = 2
+	talk_speed = 1
