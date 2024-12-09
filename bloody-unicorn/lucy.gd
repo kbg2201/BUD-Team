@@ -23,7 +23,8 @@ var thingsLucySays = [
 	"*sobbing*",
 	"Listen to me, please. ",
 	"I need help :( ",
-	"Who's there? "
+	"Who's there? ",
+	"Find the key."
 ]
 var thingsLucySaysWhenSheIsAboutToKillYou = [
 	"Hold still!",

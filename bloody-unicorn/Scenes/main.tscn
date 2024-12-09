@@ -71,7 +71,7 @@ stream = ExtResource("4_37tpt")
 volume_db = -13.56
 
 [node name="Rock" parent="." instance=ExtResource("13_q88vx")]
-position = Vector2(962, 581)
+position = Vector2(500, 1400)
 scale = Vector2(2, 2)
 
 [node name="Trees" type="Node2D" parent="."]
@@ -173,6 +173,11 @@ polygon = PackedVector2Array(-1175, 302, -894, 296, -870, -771, -559, -779, -540
 
 [node name="Wall" parent="." instance=ExtResource("20_ed8bs")]
 position = Vector2(1778, 1511)
+scale = Vector2(0.32, 0.32)
+
+[node name="Wall2" parent="." instance=ExtResource("20_ed8bs")]
+position = Vector2(2784, 599)
+rotation = 1.5708
 scale = Vector2(0.32, 0.32)
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]

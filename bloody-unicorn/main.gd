@@ -91,4 +91,5 @@ func _on_sucy_voice_scrape_stop() -> void:
 func _wall() -> void:
 	if has_key == true:
 		$Wall.queue_free()
+		$Wall2.queue_free()
 		$KeyHUD.hide()

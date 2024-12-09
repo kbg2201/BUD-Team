@@ -20,7 +20,8 @@ var thingsSucySays = [
 	"Stop ignoring me!! Hurry up!!!",
 	"You can hear me right? Follow my voice then you moron!",
 	"What are they saying? It's all lies don't listen!",
-	"I'm trying to help you!! Just trust me!"
+	"I'm trying to help you!! Just trust me!",
+	"Hurry up and find the key, dumbass."
 ]
 var thingsSucySaysWhenYouAreAboutToDie = [
 	"This isn't my fault by the way.",
